@@ -1,0 +1,41 @@
+Test_ID,Category,Test_Description,HTTP_Method,Endpoint,Request_Body,Expected_Status,Expected_Response_Pattern,Audit_Status,Audit_Rationale
+FR06_TC001,Domain Partition,Fetch existing product with valid positive integer ID (id=1),GET,/api/products/1,"",200,"{""id"":1,""name"":""string""}",VALID,Standard happy path for existing product detail lookup.
+FR06_TC002,Domain Partition,Fetch non-existent product ID (id=99999),GET,/api/products/99999,"",404,"Product not found",VALID,Tests handling of missing resource ID.
+FR06_TC003,Domain Partition,Fetch product with ID = 0,GET,/api/products/0,"",404,"Product not found",VALID,Boundary value test for zero index ID.
+FR06_TC004,Domain Partition,Fetch product with negative integer ID (id=-1),GET,/api/products/-1,"",404,"Product not found",VALID,Boundary value test for negative integer parameter.
+FR06_TC005,Domain Partition,Fetch product with non-numeric string ID (id=abc),GET,/api/products/abc,"",400,"Invalid product ID",INVALID,SUT returns 404 or sqlite null instead of explicit 400 bad request.
+FR06_TC006,Domain Partition,Fetch product with floating point number ID (id=1.5),GET,/api/products/1.5,"",400,"Invalid product ID",INCOMPLETE,AI did not test exact float parsing in backend route handler.
+FR06_TC007,Domain Partition,Fetch product with extremely large integer ID (id=9223372036854775807),GET,/api/products/9223372036854775807,"",404,"Product not found",VALID,Tests 64-bit integer boundary overflow handling.
+FR06_TC008,Domain Partition,Fetch product with empty ID path parameter (GET /api/products/),GET,/api/products/,"",200,"Array of products",VALID,Re-routed to product list endpoint GET /api/products.
+FR06_TC009,Domain Partition,Fetch product with whitespace padded ID (id=%201%20),GET,/api/products/%201%20,"",404,"Product not found",VALID,Tests url decoding and string trim on ID parameter.
+FR06_TC010,Domain Partition,Fetch product with special character ID (id=@#$),GET,/api/products/@#$,"",400,"error",VALID,Tests special characters handling in path params.
+FR06_TC011,Security,SQL Injection attempt in path parameter (id=1 OR 1=1),GET,/api/products/1%20OR%201=1,"",404,"Product not found",VALID,Tests parameterized SQL query protection against SQLi.
+FR06_TC012,Security,SQL Injection attempt with stacked queries (id=1; DROP TABLE products;--),GET,/api/products/1;%20DROP%20TABLE%20products;--,"",404,"Product not found",VALID,Tests sqlite statement isolation against stacked queries.
+FR06_TC013,Security,Path Traversal attempt in product ID (id=../../etc/passwd),GET,/api/products/../../etc/passwd,"",404,"error",VALID,Tests URL routing security against path traversal.
+FR06_TC014,Security,XSS attempt in product ID parameter (id=<script>alert(1)</script>),GET,/api/products/%3Cscript%3Ealert(1)%3C/script%3E,"",404,"Product not found",VALID,Tests reflect XSS defense on path parameters.
+FR06_TC015,Security,Null Byte Injection in product ID (id=1%00),GET,/api/products/1%00,"",400,"error",VALID,Tests string null byte handling in express route.
+FR06_TC016,Schema Validation,Validate response schema fields (id name price description imageUrl category_id),GET,/api/products/1,"",200,"{""id"":1,""price"":100000}",VALID,Validates JSON object schema fields match specification.
+FR06_TC017,Schema Validation,Validate data types of price (number) and description (string),GET,/api/products/1,"",200,"schema_data_types",VALID,Ensures numeric type for price and string type for description.
+FR06_TC018,State Transition,Fetch product detail before and after price update,GET,/api/products/1,"",200,"updated_price",VALID,Verifies detail view reflects current DB state after updates.
+FR06_TC019,State Transition,Fetch product detail for deleted product (ID deleted by admin),GET,/api/products/99,"",404,"Product not found",VALID,Verifies state transition from active to deleted product returns 404.
+FR06_TC020,Domain Partition,Fetch product with URL encoded Chinese/Vietnamese characters (id=%E7%94%9F%E9%B1%BC),GET,/api/products/%E7%94%9F%E9%B1%BC,"",404,"Product not found",VALID,Tests UTF-8 encoded URL path parameter handling.
+FR06_TC021,Domain Partition,Fetch product with hex string ID (id=0x1F),GET,/api/products/0x1F,"",404,"Product not found",VALID,Tests hex number format handling.
+FR06_TC022,Domain Partition,Fetch product with scientific notation ID (id=1e3),GET,/api/products/1e3,"",404,"Product not found",VALID,Tests scientific exponential number string parsing.
+FR06_TC023,Domain Partition,Fetch product with boolean string ID (id=true),GET,/api/products/true,"",404,"Product not found",VALID,Tests string literal boolean path handling.
+FR06_TC024,Domain Partition,Fetch product with null string ID (id=null),GET,/api/products/null,"",404,"Product not found",VALID,Tests 'null' string path parameter handling.
+FR06_TC025,Domain Partition,Fetch product with undefined string ID (id=undefined),GET,/api/products/undefined,"",404,"Product not found",VALID,Tests 'undefined' string parameter handling.
+FR06_TC026,Schema Validation,Verify HTTP Response Status 200 OK for valid product,GET,/api/products/1,"",200,"OK",VALID,Verifies HTTP status 200.
+FR06_TC027,Schema Validation,Verify Content-Type header is application/json; charset=utf-8,GET,/api/products/1,"",200,"application/json",VALID,Verifies response header Content-Type.
+FR06_TC028,Schema Validation,Verify CORS headers present in GET /api/products/1 response,GET,/api/products/1,"",200,"access-control-allow-origin",VALID,Verifies CORS access-control headers.
+FR06_TC029,Domain Partition,Fetch product with double slash in path (GET /api/products//1),GET,/api/products//1,"",200,"{""id"":1}",VALID,Tests URL normalization for duplicate slashes.
+FR06_TC030,Domain Partition,Fetch product with trailing slash (GET /api/products/1/),GET,/api/products/1/,"",200,"{""id"":1}",VALID,Tests URL normalization for trailing slashes.
+FR06_TC031,Domain Partition,HTTP POST request to GET-only endpoint /api/products/1 (without auth),POST,/api/products/1,"{}",401,"Unauthorized",VALID,Verifies method authorization check.
+FR06_TC032,Domain Partition,HTTP DELETE request to /api/products/1 without auth token,DELETE,/api/products/1,"",401,"Unauthorized",VALID,Verifies DELETE protection without admin token.
+FR06_TC033,Domain Partition,HTTP OPTIONS pre-flight request to /api/products/1,OPTIONS,/api/products/1,"",204,"",VALID,Tests CORS OPTIONS pre-flight response.
+FR06_TC034,Domain Partition,Fetch product with Accept application/xml header,GET,/api/products/1,"",200,"json",VALID,Verifies server returns JSON despite XML Accept header.
+FR06_TC035,Domain Partition,Fetch product with Cache-Control headers check,GET,/api/products/1,"",200,"",VALID,Verifies standard cache response headers.
+FR06_TC036,Human Extension,Information Disclosure - error stack trace leak on DB exception (id=NaN),GET,/api/products/NaN,"",404,"Product not found",VALID,Human extension: Ensures internal DB errors do not leak stack traces or SQL schemas.
+FR06_TC037,Human Extension,Cache Invalidation Verification - modified product details update instantly,GET,/api/products/1,"",200,"{""id"":1}",VALID,Human extension: Verifies product details update immediately without stale caching.
+FR06_TC038,Human Extension,HTTP Head request handling (HEAD /api/products/1),HEAD,/api/products/1,"",200,"",VALID,Human extension: Verifies HEAD request returns headers without body.
+FR06_TC039,Human Extension,Response Time SLA Performance Check (< 200ms response time),GET,/api/products/1,"",200,"<200ms",VALID,Human extension: Verifies response latency for product detail API.
+FR06_TC040,Human Extension,Decimal precision leak check on price field (no floating point inaccuracy),GET,/api/products/1,"",200,"{""price"":100000}",VALID,Human extension: Checks price formatting is integer/exact decimal without Javascript float bug (e.g. 99999.99999999).
