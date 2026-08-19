@@ -1,6 +1,6 @@
 # Bug Report — EShop System Under Test (SUT)
 
-**Tester:** Toan (Student ID: 25127001)  
+**Tester:** PHẠM ĐỨC TOÀN (MSSV: 23127540 - 23KTPM2)  
 **SUT Repository:** [eshop-sut](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/eshop-sut)  
 **Date:** August 19, 2026  
 

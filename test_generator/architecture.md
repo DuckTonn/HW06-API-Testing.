@@ -43,7 +43,7 @@ flowchart TD
 """
 AI API Test Generator Pseudocode & Reference Implementation
 Target SUT: EShop Backend API
-Author: Toan (StudentID: 25127001)
+Author: PHẠM ĐỨC TOÀN (StudentID: 23127540)
 """
 
 import json

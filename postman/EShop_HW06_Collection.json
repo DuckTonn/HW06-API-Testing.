@@ -11,7 +11,7 @@
       "script": {
         "type": "text/javascript",
         "exec": [
-          "pm.request.headers.add({ key: 'X-Student-Id', value: pm.environment.get('studentId') || '25127001' });"
+          "pm.request.headers.add({ key: 'X-Student-Id', value: pm.environment.get('studentId') || '23127540' });"
         ]
       }
     }
