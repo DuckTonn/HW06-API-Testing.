@@ -1,0 +1,46 @@
+name: EShop API Tests CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  api-testing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: |
+          cd eshop-sut/backend
+          npm install
+          npm install -g newman newman-reporter-htmlextra
+
+      - name: Start Backend Server
+        run: |
+          cd eshop-sut/backend
+          node server.js &
+          sleep 3
+
+      - name: Run Newman API Tests
+        run: |
+          newman run postman/EShop_HW06_Collection.json \
+            -e postman/EShop_Environment.json \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export reports/newman_report.html
+
+      - name: Upload Newman Test Report Artifact
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: newman-test-report
+          path: reports/newman_report.html
