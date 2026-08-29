@@ -1,167 +1,175 @@
-commit 5a176798e29e1ab79bc8b8e6b0507cd16d9f7fd6
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Sat Aug 29 15:41:43 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Sat Aug 29 15:41:43 2026 +0700
-
-    docs(meta): regenerate git_commit_log.txt with full 20-commit history (ASCII clean)
-
-commit b8077363dbfae058fe632e6d8c4ceee92991b361
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Sat Aug 29 15:29:44 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Sat Aug 29 15:29:44 2026 +0700
-
-    chore(sut): update SQLite database with seeded test data for Newman execution
-
-commit d3bc1d0e9abc74d21bb281b13a0fa404febe1dd1
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Sat Aug 29 15:29:31 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Sat Aug 29 15:29:31 2026 +0700
-
-    docs(meta): update README deliverable links, gitignore, and git commit log
-
-commit a7a7af63f7aa64a3c965f54563cfaaef52286f79
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Sat Aug 29 15:29:24 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Sat Aug 29 15:29:24 2026 +0700
-
-    feat(artifacts): add Excel test summary and agent skill architecture diagram PNG
-
-commit c41cd79556e780d5e45e49a3f5bcab5063cfc3c2
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Sat Aug 29 15:29:13 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Sat Aug 29 15:29:13 2026 +0700
-
-    docs(report): add Main_Report, CICD_Report, and AI Critique for HW06 submission
-
-commit 6e69134080f9db6cf3a3513418583bae80203cbc
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Sat Aug 29 15:29:02 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Sat Aug 29 15:29:02 2026 +0700
-
-    fix(postman): rewrite assertions to spec-conformance — bug tests now correctly FAIL exposing BUG-01..05
-
-commit 2323e305c3502f1a5bb48d9c056b7c3504fc452b
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Sun Aug 23 11:59:00 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Sun Aug 23 11:59:00 2026 +0700
-
-    docs(report): generate and attach Newman HTML Extra execution report
-
-commit b89c924b15da11741491a53d6ce5b846ae5af05c
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Sun Aug 23 11:58:00 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Sun Aug 23 11:58:00 2026 +0700
-
-    feat(skill): implement Antigravity Agent Skill api-test-generator and execute Newman suite
-
-commit fa0b3e56a4c7dc6758aafde6bb64d5fbaa795791
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Wed Aug 19 13:20:00 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Wed Aug 19 13:20:00 2026 +0700
-
-    test: add newman execution summary report
-
-commit cfb05750d397e59d721b684bc5325799605ec37d
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Wed Aug 19 13:20:00 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Wed Aug 19 13:20:00 2026 +0700
-
-    docs: update AI audit report format, add AI critique, and set student ID 23127540
-
-commit 214860ac3feec24ff12aebcabf82cd76073c428b
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Wed Aug 19 13:20:00 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Wed Aug 19 13:20:00 2026 +0700
-
-    docs: add git commit log
-
-commit 9fcc057e8f57de05a7a76a2cd0fbcf586dc6fe2f
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Wed Aug 19 13:10:15 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Wed Aug 19 13:10:15 2026 +0700
-
-    docs: finalize HW06 submission report and self-assessment table
-
-commit fdd0741b8657a7cb45cfff30ee66440f3022d1a7
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Wed Aug 19 11:50:30 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Wed Aug 19 11:50:30 2026 +0700
-
-    docs: add bug report and AI audit report with AI critique
-
-commit 6b7d523086a1807921d98a8f2d87061c55dba36a
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Wed Aug 19 10:05:40 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Wed Aug 19 10:05:40 2026 +0700
-
-    ci: add GitHub Actions workflow for Newman API test suite
-
-commit 9f8bb10bffd074cb6ceadadf204d6af263c981f5
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Wed Aug 19 08:22:15 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Wed Aug 19 08:22:15 2026 +0700
-
-    feat(agent): design AI test generator skill with architecture diagram and script
-
-commit 20b88187f3ebc104028328521d35d1f350ef40a9
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Wed Aug 19 02:45:50 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Wed Aug 19 02:45:50 2026 +0700
-
-    feat(postman): add Postman collection and environment with automated X-Student-Id injection
-
-commit 5ebbd326bce27e3d75844ebfca29c0e4b55e0210
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Tue Aug 18 21:10:05 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Tue Aug 18 21:10:05 2026 +0700
-
-    test(FR-12): add access control test suite covering SEC-01..07 vulnerabilities
-
-commit 94b11abcfc6c9a4a9fe85a08c3e6042677022456
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Tue Aug 18 14:35:20 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Tue Aug 18 14:35:20 2026 +0700
-
-    test(FR-07): create shopping cart test cases with security price tampering tests
-
-commit c7daaf26187677a041d277321e72fc0c99f66db5
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Tue Aug 18 09:18:45 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Tue Aug 18 09:18:45 2026 +0700
-
-    test(FR-06): add product detail view test cases and schema validation
-
-commit f7b8a8133281ba86f2fc8fe4422ed6f8015c36a6
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Mon Aug 17 20:42:15 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Mon Aug 17 20:42:15 2026 +0700
-
-    test(FR-01): generate and audit account registration test cases
-
-commit 18b2de4025f55bce3101c1ca1eba5906815219da
-Author:     duckton <phamductoan144@gmail.com>
-AuthorDate: Mon Aug 17 14:15:30 2026 +0700
-Commit:     duckton <phamductoan144@gmail.com>
-CommitDate: Mon Aug 17 14:15:30 2026 +0700
-
-    feat: import eshop-sut base application repository and spec
+﻿commit 1700f33d2e0698763313bfd462d3efbcaa4460c2
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:46:13 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:46:13 2026 +0700
+
+    docs: finalize git_commit_log.txt with clean UTF-8 encoding
+
+commit 5a176798e29e1ab79bc8b8e6b0507cd16d9f7fd6
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:41:43 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:41:43 2026 +0700
+
+    docs(meta): regenerate git_commit_log.txt with full 20-commit history (ASCII clean)
+
+commit b8077363dbfae058fe632e6d8c4ceee92991b361
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:44 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:44 2026 +0700
+
+    chore(sut): update SQLite database with seeded test data for Newman execution
+
+commit d3bc1d0e9abc74d21bb281b13a0fa404febe1dd1
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:31 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:31 2026 +0700
+
+    docs(meta): update README deliverable links, gitignore, and git commit log
+
+commit a7a7af63f7aa64a3c965f54563cfaaef52286f79
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:24 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:24 2026 +0700
+
+    feat(artifacts): add Excel test summary and agent skill architecture diagram PNG
+
+commit c41cd79556e780d5e45e49a3f5bcab5063cfc3c2
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:13 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:13 2026 +0700
+
+    docs(report): add Main_Report, CICD_Report, and AI Critique for HW06 submission
+
+commit 6e69134080f9db6cf3a3513418583bae80203cbc
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:02 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:02 2026 +0700
+
+    fix(postman): rewrite assertions to spec-conformance — bug tests now correctly FAIL exposing BUG-01..05
+
+commit 2323e305c3502f1a5bb48d9c056b7c3504fc452b
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sun Aug 23 11:59:00 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sun Aug 23 11:59:00 2026 +0700
+
+    docs(report): generate and attach Newman HTML Extra execution report
+
+commit b89c924b15da11741491a53d6ce5b846ae5af05c
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sun Aug 23 11:58:00 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sun Aug 23 11:58:00 2026 +0700
+
+    feat(skill): implement Antigravity Agent Skill api-test-generator and execute Newman suite
+
+commit fa0b3e56a4c7dc6758aafde6bb64d5fbaa795791
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Wed Aug 19 13:20:00 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Wed Aug 19 13:20:00 2026 +0700
+
+    test: add newman execution summary report
+
+commit cfb05750d397e59d721b684bc5325799605ec37d
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Wed Aug 19 13:20:00 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Wed Aug 19 13:20:00 2026 +0700
+
+    docs: update AI audit report format, add AI critique, and set student ID 23127540
+
+commit 214860ac3feec24ff12aebcabf82cd76073c428b
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Wed Aug 19 13:20:00 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Wed Aug 19 13:20:00 2026 +0700
+
+    docs: add git commit log
+
+commit 9fcc057e8f57de05a7a76a2cd0fbcf586dc6fe2f
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Wed Aug 19 13:10:15 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Wed Aug 19 13:10:15 2026 +0700
+
+    docs: finalize HW06 submission report and self-assessment table
+
+commit fdd0741b8657a7cb45cfff30ee66440f3022d1a7
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Wed Aug 19 11:50:30 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Wed Aug 19 11:50:30 2026 +0700
+
+    docs: add bug report and AI audit report with AI critique
+
+commit 6b7d523086a1807921d98a8f2d87061c55dba36a
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Wed Aug 19 10:05:40 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Wed Aug 19 10:05:40 2026 +0700
+
+    ci: add GitHub Actions workflow for Newman API test suite
+
+commit 9f8bb10bffd074cb6ceadadf204d6af263c981f5
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Wed Aug 19 08:22:15 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Wed Aug 19 08:22:15 2026 +0700
+
+    feat(agent): design AI test generator skill with architecture diagram and script
+
+commit 20b88187f3ebc104028328521d35d1f350ef40a9
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Wed Aug 19 02:45:50 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Wed Aug 19 02:45:50 2026 +0700
+
+    feat(postman): add Postman collection and environment with automated X-Student-Id injection
+
+commit 5ebbd326bce27e3d75844ebfca29c0e4b55e0210
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Tue Aug 18 21:10:05 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Tue Aug 18 21:10:05 2026 +0700
+
+    test(FR-12): add access control test suite covering SEC-01..07 vulnerabilities
+
+commit 94b11abcfc6c9a4a9fe85a08c3e6042677022456
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Tue Aug 18 14:35:20 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Tue Aug 18 14:35:20 2026 +0700
+
+    test(FR-07): create shopping cart test cases with security price tampering tests
+
+commit c7daaf26187677a041d277321e72fc0c99f66db5
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Tue Aug 18 09:18:45 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Tue Aug 18 09:18:45 2026 +0700
+
+    test(FR-06): add product detail view test cases and schema validation
+
+commit f7b8a8133281ba86f2fc8fe4422ed6f8015c36a6
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Mon Aug 17 20:42:15 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Mon Aug 17 20:42:15 2026 +0700
+
+    test(FR-01): generate and audit account registration test cases
+
+commit 18b2de4025f55bce3101c1ca1eba5906815219da
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Mon Aug 17 14:15:30 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Mon Aug 17 14:15:30 2026 +0700
+
+    feat: import eshop-sut base application repository and spec
