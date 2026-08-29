@@ -7,7 +7,7 @@
 | **Class** | 23KTPM2 |
 | **Course** | CS423 / CSC13003 – Software Testing (HW06-AI) |
 | **Repository** | [DuckTonn/HW06-API-Testing](https://github.com/DuckTonn/HW06-API-Testing.) |
-| **Workflow File** | [.github/workflows/api-tests.yml](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/.github/workflows/api-tests.yml) |
+| **Workflow File** | [.github/workflows/api-tests.yml](.github/workflows/api-tests.yml) |
 
 ---
 

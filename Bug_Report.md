@@ -1,7 +1,7 @@
 # Bug Report — EShop System Under Test (SUT)
 
 **Tester:** PHẠM ĐỨC TOÀN (MSSV: 23127540 - 23KTPM2)  
-**SUT Repository:** [eshop-sut](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/eshop-sut)  
+**SUT Repository:** [eshop-sut](eshop-sut)  
 **Date:** August 19, 2026  
 
 ---
@@ -23,7 +23,7 @@ During the execution of automated API tests across Pool A (FR-01, FR-06), Pool B
   - `PUT /api/admin/orders/:id/status`
   - `POST /api/admin/coupons`
   - `DELETE /api/admin/coupons/:id`
-- **Location in Code:** [server.js](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/eshop-sut/backend/server.js#L494-L525)
+- **Location in Code:** [eshop-sut/backend/server.js (Lines 494–525)](eshop-sut/backend/server.js#L494-L525)
 - **Description:** The `authenticateToken` middleware verifies the JWT token signature, but admin routes fail to inspect whether `req.user.role === 'admin'`. As a result, any registered normal user token can access all administrative functions, including reading user data, deleting arbitrary users, modifying order statuses, and creating/deleting discount coupons.
 - **Steps to Reproduce:**
   1. Register a standard user via `POST /api/register`.
@@ -38,7 +38,7 @@ During the execution of automated API tests across Pool A (FR-01, FR-06), Pool B
 - **Severity:** CRITICAL
 - **Category:** Mass Assignment / Role Escalation
 - **Affected Endpoint:** `PUT /api/users/me`
-- **Location in Code:** [server.js](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/eshop-sut/backend/server.js#L124-L127)
+- **Location in Code:** [eshop-sut/backend/server.js (Lines 124–127)](eshop-sut/backend/server.js#L124-L127)
 - **Description:** Line 124 checks `if (role) { query += ", role = ?"; params.push(role); }`. The backend allows the client to pass a `role` field in the request body of `PUT /api/users/me`, updating `users.role` directly in SQLite.
 - **Steps to Reproduce:**
   1. Login as standard user (`role = 'user'`).
@@ -53,7 +53,7 @@ During the execution of automated API tests across Pool A (FR-01, FR-06), Pool B
 - **Severity:** HIGH
 - **Category:** Security / SQL Injection
 - **Affected Endpoint:** `GET /api/products?search=...`
-- **Location in Code:** [server.js](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/eshop-sut/backend/server.js#L144)
+- **Location in Code:** [eshop-sut/backend/server.js (Line 144)](eshop-sut/backend/server.js#L144)
 - **Description:** Line 144 constructs raw SQL via string template literal: `const query = 'SELECT * FROM products WHERE name LIKE \'%${searchQuery}%\'';`. User input `searchQuery` is unescaped and unparameterized.
 - **Steps to Reproduce:**
   1. Send request `GET /api/products?search=' OR '1'='1`
@@ -66,7 +66,7 @@ During the execution of automated API tests across Pool A (FR-01, FR-06), Pool B
 - **Severity:** MEDIUM
 - **Category:** Input Validation
 - **Affected Endpoint:** `POST /api/register`
-- **Location in Code:** [server.js](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/eshop-sut/backend/server.js#L20-L30)
+- **Location in Code:** [eshop-sut/backend/server.js (Lines 20–30)](eshop-sut/backend/server.js#L20-L30)
 - **Description:** `POST /api/register` inserts `name, email, password` directly into database without verifying email RFC format or enforcing minimum password length/complexity.
 - **Steps to Reproduce:**
   1. Send `POST /api/register` with body `{"name": "User", "email": "invalidemail", "password": "1"}`.
@@ -79,7 +79,7 @@ During the execution of automated API tests across Pool A (FR-01, FR-06), Pool B
 - **Severity:** HIGH
 - **Category:** Business Logic / State Machine Violation
 - **Affected Endpoint:** `PUT /api/admin/orders/:id/status`
-- **Location in Code:** [server.js](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/eshop-sut/backend/server.js#L550-L551)
+- **Location in Code:** [eshop-sut/backend/server.js (Lines 550–551)](eshop-sut/backend/server.js#L550-L551)
 - **Description:** Line 550 explicitly sets `if (currentStatus === "canceled" && status === "delivered") isValidTransition = true;`. This allows canceled orders to be marked delivered, violating the order state machine transition rules.
 - **Steps to Reproduce:**
   1. Select an order currently in `canceled` state.

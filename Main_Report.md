@@ -41,7 +41,7 @@
 ## 1. Giới thiệu & Tổng quan kiến trúc SUT
 Hệ thống **EShop SUT** là một nền tảng thương mại điện tử thử nghiệm, được xây dựng phục vụ môn học Kiểm chứng Phần mềm. Backend được phát triển bằng **Node.js (Express framework)** kết hợp cơ sở dữ liệu **SQLite3** (`database.sqlite`), hỗ trợ cơ chế xác thực JWT Token và cung cấp các REST API cho người dùng và quản trị viên.
 
-Hệ thống cung cấp tài liệu đặc tả [api_specification.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/eshop-sut/api_specification.md) cùng danh mục 7 yêu cầu an ninh bắt buộc (**SEC-01 đến SEC-07**):
+Hệ thống cung cấp tài liệu đặc tả [api_specification.md](eshop-sut/api_specification.md) cùng danh mục 7 yêu cầu an ninh bắt buộc (**SEC-01 đến SEC-07**):
 - **SEC-01 (Broken Access Control):** Chặn người dùng thường truy cập trái phép chức năng quản trị `/api/admin/*`.
 - **SEC-02 (SQL Injection):** Ngăn chặn chèn mã SQL vào các tham số tìm kiếm, lọc dữ liệu.
 - **SEC-03 (Authentication Bypass):** Ngăn chặn làm giả token, truy cập không có chữ ký JWT hợp lệ.
@@ -77,7 +77,7 @@ Toàn bộ quy trình kiểm thử cho từng tính năng đều đi qua 5 giai 
 
 ### 3.1. API 1 (Pool A) — FR-01: Account Registration
 - **Endpoint:** `POST /api/register`
-- **Tập tin kịch bản kiểm thử:** [test_cases/FR01_Account_Registration.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR01_Account_Registration.csv)
+- **Tập tin kịch bản kiểm thử:** [test_cases/FR01_Account_Registration.csv](test_cases/FR01_Account_Registration.csv)
 
 #### A. Tổng hợp kết quả sinh & Audit
 - **Số lượng test case do AI sinh:** 35 test cases (TC001 – TC035).
@@ -102,7 +102,7 @@ Toàn bộ quy trình kiểm thử cho từng tính năng đều đi qua 5 giai 
 
 ### 3.2. API 2 (Pool A & B) — FR-06: Product Detail & FR-07: Shopping Cart
 - **Endpoints:** `GET /api/products/:id`, `GET /api/cart`, `POST /api/cart`
-- **Tập tin kịch bản kiểm thử:** [test_cases/FR06_Product_Detail.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR06_Product_Detail.csv) & [test_cases/FR07_Shopping_Cart.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR07_Shopping_Cart.csv)
+- **Tập tin kịch bản kiểm thử:** [test_cases/FR06_Product_Detail.csv](test_cases/FR06_Product_Detail.csv) & [test_cases/FR07_Shopping_Cart.csv](test_cases/FR07_Shopping_Cart.csv)
 
 #### A. Tổng hợp kết quả sinh & Audit
 - **Số lượng test case:** 40 test cases cho FR-06 và 40 test cases cho FR-07 (bao gồm 70 do AI sinh và 10 ca mở rộng).
@@ -130,7 +130,7 @@ Toàn bộ quy trình kiểm thử cho từng tính năng đều đi qua 5 giai 
 
 ### 3.3. API 3 (Pool C) — FR-12: Access Control (Web Admin)
 - **Endpoints:** `/api/admin/users`, `/api/admin/orders`, `/api/admin/coupons`
-- **Tập tin kịch bản kiểm thử:** [test_cases/FR12_Access_Control.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR12_Access_Control.csv)
+- **Tập tin kịch bản kiểm thử:** [test_cases/FR12_Access_Control.csv](test_cases/FR12_Access_Control.csv)
 
 #### A. Tổng hợp kết quả sinh & Audit
 - **Số lượng test case do AI sinh:** 35 test cases (TC001 – TC035).
@@ -154,7 +154,7 @@ Toàn bộ quy trình kiểm thử cho từng tính năng đều đi qua 5 giai 
 ---
 
 ## 4. Tổng hợp Bug & Lỗ hổng bảo mật phát hiện
-Chi tiết đầy đủ kèm các bước tái hiện được lưu trữ tại [Bug_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/Bug_Report.md):
+Chi tiết đầy đủ kèm các bước tái hiện được lưu trữ tại [Bug_Report.md](Bug_Report.md):
 
 | Mã Bug | Mức độ | Nhóm lỗ hổng | Endpoint bị ảnh hưởng | Vị trí mã nguồn | Tóm tắt lỗi |
 | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -170,7 +170,7 @@ Chi tiết đầy đủ kèm các bước tái hiện được lưu trữ tại 
 Để tối ưu hóa quy trình kiểm thử và đáp ứng yêu cầu Section 6 của đề bài, bộ kịch bản kiểm thử tận dụng các tính năng cao cấp của Postman:
 
 1. **Collection Hierarchy & Modular Folders:**
-   - Phân chia Collection [EShop_HW06_Collection.json](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/postman/EShop_HW06_Collection.json) thành 5 thư mục chuyên biệt: `0. Setup & Authentication`, `1. FR-01 Registration`, `2. FR-06 Product Detail`, `3. FR-07 Shopping Cart`, và `4. FR-12 Access Control`.
+   - Phân chia Collection [EShop_HW06_Collection.json](postman/EShop_HW06_Collection.json) thành 5 thư mục chuyên biệt: `0. Setup & Authentication`, `1. FR-01 Registration`, `2. FR-06 Product Detail`, `3. FR-07 Shopping Cart`, và `4. FR-12 Access Control`.
 2. **Collection-Level Pre-request Script (Anti-AI-Cheat):**
    - Tự động chèn header định danh sinh viên vào **100%** HTTP requests phát ra:
    ```javascript
@@ -181,7 +181,7 @@ Chi tiết đầy đủ kèm các bước tái hiện được lưu trữ tại 
    console.log('[Pre-request Script] Injected Header -> X-Student-Id: ' + (pm.environment.get('studentId') || '23127540'));
    ```
 3. **Environment & Dynamic Variable Management:**
-   - Sử dụng [EShop_Environment.json](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/postman/EShop_Environment.json) để quản lý tập trung các biến: `baseUrl`, `studentId`, `userToken`, `adminToken`, `productId`, `orderId`.
+   - Sử dụng [EShop_Environment.json](postman/EShop_Environment.json) để quản lý tập trung các biến: `baseUrl`, `studentId`, `userToken`, `adminToken`, `productId`, `orderId`.
    - Token xác thực từ request đăng nhập được tự động lưu vào biến môi trường bằng script:
    ```javascript
    var jsonData = pm.response.json();
@@ -194,12 +194,12 @@ Chi tiết đầy đủ kèm các bước tái hiện được lưu trữ tại 
    - Kiểm tra kiểu dữ liệu và JSON Schema (`pm.expect(jsonData).to.be.an('array')`).
    - Kiểm tra tính toàn vẹn của thông điệp lỗi.
 5. **Newman CLI Runner & HTML Extra Reporter:**
-   - Thực thi headless test suite và tự động xuất báo cáo trực quan dạng dashboard [reports/newman_report.html](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/reports/newman_report.html) với đầy đủ biểu đồ phân tích thời gian phản hồi, tỉ lệ pass/fail và chi tiết payload.
+   - Thực thi headless test suite và tự động xuất báo cáo trực quan dạng dashboard [reports/newman_report.html](reports/newman_report.html) với đầy đủ biểu đồ phân tích thời gian phản hồi, tỉ lệ pass/fail và chi tiết payload.
 
 ---
 
 ## 6. Tích hợp CI/CD Pipeline (GitHub Actions)
-Kịch bản kiểm thử API được tự động hóa hoàn toàn trong quy trình CI/CD qua GitHub Actions tại [.github/workflows/api-tests.yml](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/.github/workflows/api-tests.yml). Báo cáo chi tiết có tại [CICD_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/CICD_Report.md).
+Kịch bản kiểm thử API được tự động hóa hoàn toàn trong quy trình CI/CD qua GitHub Actions tại [.github/workflows/api-tests.yml](.github/workflows/api-tests.yml). Báo cáo chi tiết có tại [CICD_Report.md](CICD_Report.md).
 
 ### A. Kiến trúc Pipeline
 1. Kích hoạt tự động khi có `push` hoặc `pull_request` vào nhánh `main` / `master`.
@@ -228,10 +228,10 @@ Kịch bản kiểm thử API được tự động hóa hoàn toàn trong quy t
 ## 7. Thiết kế & Cài đặt Agent Skill (AI Test Generator)
 Đáp ứng mức năng lực Bloom-AI G9.5 (Create), sinh viên đã tự thiết kế và lập trình hoàn chỉnh một Agent Skill chuyên biệt có khả năng tự động đọc tài liệu đặc tả API và sinh test case:
 
-- **Sơ đồ kiến trúc (PNG do sinh viên tự thiết kế):** [test_generator/architecture_diagram.png](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/architecture_diagram.png)
-- **Tài liệu kiến trúc & Pseudocode:** [test_generator/architecture.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/architecture.md)
-- **Mã nguồn thực thi Python:** [test_generator/test_generator.py](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/test_generator.py)
-- **Định nghĩa Agent Skill Antigravity:** [.agents/skills/api-test-generator/SKILL.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/.agents/skills/api-test-generator/SKILL.md)
+- **Sơ đồ kiến trúc (PNG do sinh viên tự thiết kế):** [test_generator/architecture_diagram.png](test_generator/architecture_diagram.png)
+- **Tài liệu kiến trúc & Pseudocode:** [test_generator/architecture.md](test_generator/architecture.md)
+- **Mã nguồn thực thi Python:** [test_generator/test_generator.py](test_generator/test_generator.py)
+- **Định nghĩa Agent Skill Antigravity:** [.agents/skills/api-test-generator/SKILL.md](.agents/skills/api-test-generator/SKILL.md)
 
 ### Sơ đồ luồng hoạt động của Agent Skill
 ```mermaid
@@ -266,7 +266,7 @@ flowchart TD
 Khi chạy lệnh `python test_generator/test_generator.py`:
 - Bóc tách thành công 17 endpoints từ `eshop-sut/api_specification.md`.
 - Sinh tự động 50 test cases bao quát Happy Path, Missing Payload, Unauthenticated, và SQL Injection.
-- Xuất dữ liệu hoàn chỉnh ra [reports/generated_test_suite.json](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/reports/generated_test_suite.json).
+- Xuất dữ liệu hoàn chỉnh ra [reports/generated_test_suite.json](reports/generated_test_suite.json).
 
 ---
 
@@ -283,12 +283,12 @@ Báo cáo và toàn bộ hiện vật minh chứng tuyệt đối tuân thủ M�
    - Hostname phản ánh chính xác deployment cục bộ tại `http://localhost:3000`.
    - Báo cáo Newman HTML Extra được sinh thực tế trên máy tính sinh viên, ghi nhận thời gian phản hồi trung bình ~8ms–34ms.
 3. **Sơ đồ kiến trúc Agent Skill tự thiết kế:**
-   - Bản vẽ kiến trúc [test_generator/architecture_diagram.png](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/architecture_diagram.png) do chính sinh viên thiết kế cấu trúc, các khối xử lý và luồng dữ liệu, không phải hình vẽ AI sinh bừa bãi.
+   - Bản vẽ kiến trúc [test_generator/architecture_diagram.png](test_generator/architecture_diagram.png) do chính sinh viên thiết kế cấu trúc, các khối xử lý và luồng dữ liệu, không phải hình vẽ AI sinh bừa bãi.
 
 ---
 
 ## 9. AI Critique (Bình duyệt năng lực AI)
-*(Trích xuất nguyên văn từ [ai_critique.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/ai_critique.md), dung lượng ~275 từ, chuẩn 200–300 từ)*
+*(Trích xuất nguyên văn từ [ai_critique.md](ai_critique.md), dung lượng ~275 từ, chuẩn 200–300 từ)*
 
 > Trong quá trình thực hiện bài tập kiểm thử API cho hệ thống EShop (bao gồm FR-01, FR-06, FR-07 và FR-12), việc hợp tác với AI đã bộc lộ rõ cả điểm mạnh vượt trội lẫn những hạn chế chí mạng của mô hình ngôn ngữ lớn (LLM).
 >
@@ -299,7 +299,7 @@ Báo cáo và toàn bộ hiện vật minh chứng tuyệt đối tuân thủ M�
 ---
 
 ## 10. AI Audit Report (Phụ lục kiểm toán AI)
-*(Tóm lược từ bản hoàn chỉnh [AI_Audit_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/AI_Audit_Report.md))*
+*(Tóm lược từ bản hoàn chỉnh [AI_Audit_Report.md](AI_Audit_Report.md))*
 
 | STT | Tên Artifact kiểm toán | Công cụ AI & Thời gian | Đánh giá (Verdict) | Lý do kỹ thuật (ISTQB / Mã nguồn) | Bản sinh viên sửa đổi |
 | :---: | :--- | :--- | :---: | :--- | :--- |
@@ -310,12 +310,12 @@ Báo cáo và toàn bộ hiện vật minh chứng tuyệt đối tuân thủ M�
 | **5** | Thiết kế Agent Skill Test Generator | Gemini 3.6 Flash<br>2026-08-19 12:40 | **VALID** | Cấu trúc phân tầng module đáp ứng chuẩn Bloom G9.5 (Create), phân tách rõ Parser, Generator, Validator, Exporter. | Giữ nguyên kiến trúc, hoàn thiện script Python bóc tách regex endpoint và xuất JSON. |
 
 - **Tổng kết độ chính xác của AI:** VALID: 20% (1/5) | INVALID: 40% (2/5) | INCOMPLETE: 40% (2/5).
-- **Mandatory Disclosure:** Đã ký cam kết minh bạch và trung thực học thuật theo mẫu quy định tại [AI_Audit_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/AI_Audit_Report.md).
+- **Mandatory Disclosure:** Đã ký cam kết minh bạch và trung thực học thuật theo mẫu quy định tại [AI_Audit_Report.md](AI_Audit_Report.md).
 
 ---
 
 ## 11. Lịch sử Commit Git (Git Commit Log)
-Toàn bộ quá trình phát triển, sinh test, audit, kiểm thử và tài liệu hóa được ghi lại qua chuỗi 14 commits rõ ràng trên Git (chi tiết tại [git_commit_log.txt](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/git_commit_log.txt)):
+Toàn bộ quá trình phát triển, sinh test, audit, kiểm thử và tài liệu hóa được ghi lại qua chuỗi 14 commits rõ ràng trên Git (chi tiết tại [git_commit_log.txt](git_commit_log.txt)):
 
 ```text
 2323e30 docs(report): generate and attach Newman HTML Extra execution report
@@ -341,10 +341,10 @@ f7b8a81 test(FR-01): generate and audit account registration test cases
 
 | STT | Tiêu chí đánh giá | Điểm tối đa | Điểm tự đánh giá | Minh chứng / Ghi chú |
 | :---: | :--- | :---: | :---: | :--- |
-| **1** | **API 1 (FR-01: Account Registration)**<br>Đầy đủ quy trình: Generate (35 TCs) + Audit + Extend (5 TCs) + Execute Newman + Bug Report | 30 | **30** | [FR01_Account_Registration.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR01_Account_Registration.csv), phát hiện BUG-04 |
-| **2** | **API 2 (FR-06: Product Detail & FR-07: Shopping Cart)**<br>Đầy đủ quy trình: Generate (70 TCs) + Audit + Extend (10 TCs) + Execute Newman + Bug Report | 30 | **30** | [FR06_Product_Detail.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR06_Product_Detail.csv), [FR07_Shopping_Cart.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR07_Shopping_Cart.csv), phát hiện BUG-03 và Price Tampering |
-| **3** | **API 3 (FR-12: Access Control Web Admin)**<br>Đầy đủ quy trình: Generate (35 TCs) + Audit + Extend (5 TCs) + Execute Newman + Bug Report | 30 | **30** | [FR12_Access_Control.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR12_Access_Control.csv), vạch trần lỗ hổng tối nghiêm trọng BUG-01, BUG-02, BUG-05 |
-| **4** | **Agent Skill (AI-driven API Test Generator)**<br>Sơ đồ kiến trúc tự thiết kế, Pseudocode, triển khai Agent Skill Antigravity và script Python chạy thực tế | 10 | **10** | [architecture_diagram.png](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/architecture_diagram.png), [architecture.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/architecture.md), [test_generator.py](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/test_generator.py), [.agents/skills/api-test-generator/SKILL.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/.agents/skills/api-test-generator/SKILL.md) |
+| **1** | **API 1 (FR-01: Account Registration)**<br>Đầy đủ quy trình: Generate (35 TCs) + Audit + Extend (5 TCs) + Execute Newman + Bug Report | 30 | **30** | [FR01_Account_Registration.csv](test_cases/FR01_Account_Registration.csv), phát hiện BUG-04 |
+| **2** | **API 2 (FR-06: Product Detail & FR-07: Shopping Cart)**<br>Đầy đủ quy trình: Generate (70 TCs) + Audit + Extend (10 TCs) + Execute Newman + Bug Report | 30 | **30** | [FR06_Product_Detail.csv](test_cases/FR06_Product_Detail.csv), [FR07_Shopping_Cart.csv](test_cases/FR07_Shopping_Cart.csv), phát hiện BUG-03 và Price Tampering |
+| **3** | **API 3 (FR-12: Access Control Web Admin)**<br>Đầy đủ quy trình: Generate (35 TCs) + Audit + Extend (5 TCs) + Execute Newman + Bug Report | 30 | **30** | [FR12_Access_Control.csv](test_cases/FR12_Access_Control.csv), vạch trần lỗ hổng tối nghiêm trọng BUG-01, BUG-02, BUG-05 |
+| **4** | **Agent Skill (AI-driven API Test Generator)**<br>Sơ đồ kiến trúc tự thiết kế, Pseudocode, triển khai Agent Skill Antigravity và script Python chạy thực tế | 10 | **10** | [architecture_diagram.png](test_generator/architecture_diagram.png), [architecture.md](test_generator/architecture.md), [test_generator.py](test_generator/test_generator.py), [.agents/skills/api-test-generator/SKILL.md](.agents/skills/api-test-generator/SKILL.md) |
 | **TỔNG** | **Toàn bộ bài tập HW06** | **100** | **100 / 100** | **Đầy đủ 100% hiện vật minh chứng theo Section 14 của đề bài** |
 
 ---
