@@ -67,11 +67,43 @@ Kịch bản kiểm thử API được tích hợp tự động vào quy trình 
 
 ---
 
-## 5. Agent Skill (AI Test Generator)
+## 5. Agent Skill (AI-driven API Test Generator)
 
-Thiết kế và cài đặt hoàn chỉnh công cụ AI sinh test case tự động:
-- **Kiến trúc & Pseudocode:** [test_generator/architecture.md](test_generator/architecture.md)
-- **Mã nguồn thực thi Python:** [test_generator/test_generator.py](test_generator/test_generator.py)
+Đồ án triển khai đầy đủ kiến trúc **Antigravity Agent Skill** ([.agents/skills/api-test-generator/SKILL.md](.agents/skills/api-test-generator/SKILL.md)) giúp AI tự động đọc hiểu đặc tả API và sinh kịch bản kiểm thử có cấu trúc.
+
+### 5.1. Các câu Prompt mẫu điều khiển Agent (Step-by-Step Prompting)
+
+Theo quy định tại **Mục 6 của đề bài** (yêu cầu điều khiển AI từng bước, không dùng 1 prompt chung chung):
+
+1. **Prompt 1 — Phân tích đặc tả & Sinh Test Cases có cấu trúc:**
+   > *"Đọc tài liệu [api_specification.md](eshop-sut/api_specification.md) của hệ thống EShop SUT. Sử dụng kỹ thuật Equivalence Partitioning (EP), Boundary Value Analysis (BVA), State Transitions (FR-10) và Security Constraints (SEC-01 đến SEC-07) để sinh 35 test cases chi tiết cho mỗi tính năng (FR-01, FR-06, FR-07, FR-12) với các cột: Test_ID, Category, Method, Endpoint, Request_Body, Expected_Status, Expected_Response."*
+
+2. **Prompt 2 — Rà soát & Đánh giá Audit (Human Review):**
+   > *"Đối soát từng test case do AI sinh với mã nguồn thực tế trong `eshop-sut/backend/server.js`. Gắn nhãn `VALID`, `INVALID`, hoặc `INCOMPLETE` cho từng ca kiểm thử kèm lý do giải thích chi tiết dựa trên chuẩn kiểm thử ISTQB và hành vi thực tế của SUT."*
+
+3. **Prompt 3 — Mở rộng ca kiểm thử con người (Human Extension):**
+   > *"Phân tích các lỗ hổng mà AI bỏ sót do AI Specification-First Bias (thiếu khả năng phân tích tĩnh mã nguồn). Bổ sung ít nhất 5 test cases mở rộng cho mỗi API tập trung vào: Broken Access Control (SEC-01), Privilege Escalation qua Mass Assignment (SEC-04), SQL Injection (SEC-02), và Invalid State Machine (FR-10)."*
+
+4. **Prompt 4 — Xuất bản Postman Collection & Tự động hóa Newman:**
+   > *"Tổng hợp toàn bộ 160 test cases thành Postman Collection v2.1.0 và Environment JSON. Tự động chèn header `X-Student-Id: 23127540` vào Collection Pre-request Script và thiết lập các assertions kiểm thử strict-conformance để vạch trần lỗi SUT khi chạy với Newman."*
+
+---
+
+### 5.2. Lệnh thực thi Agent Skill
+
+Bạn có thể chạy trực tiếp engine sinh test case bằng dòng lệnh:
+
+```bash
+# Chạy script sinh test và xuất báo cáo JSON:
+python test_generator/test_generator.py
+
+# Hoặc kích hoạt qua Agent Skill CLI:
+python .agents/skills/api-test-generator/scripts/generator.py --spec eshop-sut/api_specification.md --output reports/generated_test_suite.json
+```
+
+- **Sơ đồ kiến trúc & Pseudocode:** [test_generator/architecture.md](test_generator/architecture.md)
+- **Hình ảnh sơ đồ tự vẽ (Anti-Cheat):** [test_generator/architecture_diagram.png](test_generator/architecture_diagram.png)
+- **Agent Skill Definition (YAML + MD):** [.agents/skills/api-test-generator/SKILL.md](.agents/skills/api-test-generator/SKILL.md)
 
 ---
 
