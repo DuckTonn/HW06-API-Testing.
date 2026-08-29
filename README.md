@@ -86,19 +86,42 @@ flowchart LR
 
 ### 5.1. Cách 1: Sử dụng tương tác thông qua AI Chat (Antigravity IDE / Agentic Chat)
 
-Khi mở dự án trong môi trường Antigravity IDE, hệ thống sẽ **tự động nạp Skill** `api-test-generator`. Bạn chỉ cần gửi các câu prompt theo từng bước:
+Khi mở dự án trong Antigravity IDE, hệ thống sẽ **tự động nạp Skill** `api-test-generator` từ thư mục `.agents/skills/api-test-generator/`. Bạn có thể copy trực tiếp các câu prompt sau vào khung chat với AI:
 
-* **Bước 1 — Yêu cầu sinh test cases từ đặc tả API:**
-  > *"Kích hoạt skill `api-test-generator` để phân tích file [api_specification.md](eshop-sut/api_specification.md) và tự động sinh 35 test cases cho mỗi API (FR-01, FR-06, FR-07, FR-12) bao phủ đầy đủ: Phân vùng tương đương (EP), Phân tích giá trị biên (BVA), Chuyển trạng thái (FR-10) và An toàn thông tin (SEC-01..07)."*
+####  Câu Prompt:
+```text
+Hãy kích hoạt và tuân thủ hướng dẫn trong skill `api-test-generator` (tại `.agents/skills/api-test-generator/SKILL.md`):
+1. Đọc và phân tích tài liệu đặc tả API tại `eshop-sut/api_specification.md` cho 4 tính năng: FR-01 (Account Registration), FR-06 (Product Detail), FR-07 (Shopping Cart), FR-12 (Access Control).
+2. Tự động sinh ít nhất 35 test cases cho mỗi tính năng bao phủ đầy đủ: Phân vùng tương đương (EP), Phân tích giá trị biên (BVA), Máy chuyển trạng thái (State Machine) và An toàn bảo mật (SEC-01 đến SEC-07).
+3. Tự động chèn header định danh `X-Student-Id: 23127540` vào tất cả các test case.
+4. Đối soát (Audit) các test case với mã nguồn thực tế tại `eshop-sut/backend/server.js`, gắn nhãn VALID, INVALID, INCOMPLETE kèm lý do phân tích.
+5. Mở rộng thêm 5 ca kiểm thử Human Extension cho mỗi API để vạch trần các lỗi bảo mật SUT (như BUG-01 đến BUG-05).
+6. Xuất dữ liệu ra file `reports/generated_test_suite.json` và các file CSV tương ứng trong `test_cases/`.
+```
 
-* **Bước 2 — Yêu cầu đối soát mã nguồn (Human Audit):**
-  > *"Đối chiếu từng test case vừa sinh với mã nguồn `eshop-sut/backend/server.js`. Gắn nhãn `VALID`, `INVALID`, hoặc `INCOMPLETE` kèm phân tích nguyên nhân dựa trên quy tắc kiểm thử ISTQB."*
+---
 
-* **Bước 3 — Yêu cầu mở rộng các ca kiểm thử bỏ sót (Human Extension):**
-  > *"Tìm ra 5 ca kiểm thử bảo mật và lỗi logic mà AI đã bỏ sót do AI Specification-First Bias (như Broken Access Control BUG-01, Privilege Escalation BUG-02, SQL Injection BUG-03, Invalid State Machine BUG-05). Bổ sung vào danh mục kiểm thử."*
+#### Bộ Prompt Từng Bước :
 
-* **Bước 4 — Xuất bản Postman Collection & Chạy kiểm thử tự động:**
-  > *"Tổng hợp thành Postman Collection v2.1.0 với Pre-request Script chèn Header `X-Student-Id: 23127540` và chạy kiểm thử tự động bằng Newman để xuất báo cáo HTML Extra."*
+* **Bước 1 — Yêu cầu Agent Skill đọc đặc tả & sinh kịch bản kiểm thử:**
+  ```text
+  Sử dụng skill `api-test-generator` trong thư mục `.agents/skills/api-test-generator/SKILL.md`, hãy đọc file `eshop-sut/api_specification.md` và sinh 35 test cases cho mỗi tính năng (FR-01, FR-06, FR-07, FR-12) với các cột: Test_ID, Category, Method, Endpoint, Request_Body, Expected_Status, Expected_Response. Đảm bảo bao phủ EP, BVA, State Machine và SEC-01..07.
+  ```
+
+* **Bước 2 — Yêu cầu Agent đối soát mã nguồn SUT (Human Audit):**
+  ```text
+  Dựa trên các test case vừa sinh, hãy đối chiếu từng ca kiểm thử với mã nguồn triển khai thực tế trong `eshop-sut/backend/server.js`. Đánh giá và dán nhãn VALID, INVALID, hoặc INCOMPLETE cho từng test case kèm giải thích cụ thể vì sao SUT có hành vi khác với đặc tả.
+  ```
+
+* **Bước 3 — Yêu cầu bổ sung ca kiểm thử mở rộng (Human Extension):**
+  ```text
+  Hãy phân tích các lỗ hổng mà AI bỏ sót do AI Specification-First Bias (thiếu phân tích tĩnh mã nguồn). Bổ sung thêm 5 ca kiểm thử mở rộng cho mỗi API tập trung vào: Broken Access Control (BUG-01), Privilege Escalation qua Mass Assignment (BUG-02), SQL Injection (BUG-03), và Invalid State Transition (BUG-05).
+  ```
+
+* **Bước 4 — Yêu cầu tạo Postman Collection & Chạy kiểm thử tự động:**
+  ```text
+  Hãy tổng hợp 160 test case thành Postman Collection v2.1.0 kèm Environment JSON. Tự động chèn header `X-Student-Id: 23127540` vào Collection Pre-request Script và thiết lập assertions kiểm thử nghiêm ngặt để khi chạy Newman sẽ phát hiện đúng 5 bug của hệ thống.
+  ```
 
 ---
 
