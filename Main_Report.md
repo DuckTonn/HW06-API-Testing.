@@ -16,6 +16,7 @@
 | **Mã nguồn SUT gốc** | [https://github.com/ttbhanh/eshop-sut](https://github.com/ttbhanh/eshop-sut) |
 | **GitHub Repository nộp bài** | [https://github.com/DuckTonn/HW06-API-Testing](https://github.com/DuckTonn/HW06-API-Testing) |
 | **Điểm tự đánh giá (Self-Assessed Grade)** | **100 / 100 điểm** |
+| **Video demo Agent Skill** | [https://youtu.be/bWnqMi2lzZ4](https://youtu.be/bWnqMi2lzZ4) |
 
 ---
 
@@ -163,6 +164,10 @@ Chi tiết đầy đủ kèm các bước tái hiện được lưu trữ tại 
 | **BUG-04** | **MEDIUM** | Input Validation (FR-01) | `POST /api/register` | `server.js:20-30` | Không validate email và mật khẩu, chấp nhận mật khẩu rỗng và email sai chuẩn. |
 | **BUG-05** | **HIGH** | State Machine Flaw (FR-10) | `PUT /api/admin/orders/:id/status` | `server.js:550` | Cố tình cho phép chuyển trạng thái phi logic từ `canceled` (đã hủy) sang `delivered` (đã giao). |
 
+- **Danh sách 5 lỗi được gắn nhãn trên GitHub Issues:** [https://github.com/DuckTonn/HW06-API-Testing./issues](https://github.com/DuckTonn/HW06-API-Testing./issues)
+
+![Danh sách GitHub Issues của dự án](screenshots/Bug_Issues.png)
+
 ---
 
 ## 5. Ứng dụng các tính năng nâng cao của Postman
@@ -209,18 +214,24 @@ Kịch bản kiểm thử API được tự động hóa hoàn toàn trong quy t
 6. Lưu trữ artifact báo cáo (`actions/upload-artifact@v3`).
 
 ### B. Hai mẫu Commit kiểm chứng độ nhạy của Pipeline (Section 6)
-- **Sample Run 1 (All Passed - Commit `c1_all_passed`):**
-  - Trạng thái: **Success (Xanh)**.
+- **Sample Run 1 (All Passed - Commit `feat(ci): all test cases passing in pipeline`):**
+  - Trạng thái: **Success (Xanh ✅)**.
   - Tổng số 17 requests và 21 assertions đều vượt qua thành công trên môi trường thực thi chuẩn.
-- **Sample Run 2 (One Failed - Commit `c2_one_failed`):**
-  - Trạng thái: **Failed (Đỏ)**.
+  - Báo cáo Newman HTML Extra:
+
+![Sample Run 1 - All Passed](screenshots/GitHub_Actions_Success.png)
+
+- **Sample Run 2 (Defect Detected - Commit `fix(postman): rewrite assertions to spec-conformance`):**
+  - Trạng thái: **Failed (Đỏ ❌)**.
   - Cố tình thiết lập assertion kiểm tra nghiêm ngặt quyền hạn Admin:
     ```javascript
     pm.test('Strict RBAC Admin check returns 403 Forbidden', function () {
         pm.response.to.have.status(403);
     });
     ```
-  - Do SUT gặp lỗ hổng BUG-01 trả về `200 OK`, Newman ngay lập tức dừng tiến trình với exit code `1`, ngăn chặn việc triển khai mã nguồn lỗi lên môi trường production.
+  - Do SUT gặp lỗ hổng BUG-01 trả về `200 OK`, Newman ngay lập tức dừng tiến trình với exit code `1`, ngăn chặn việc triển khai mã nguồn lỗi lên môi trường production:
+
+![Sample Run 2 - Defect Detection Failed](screenshots/GitHub_Actions_Failed.png)
 
 ---
 

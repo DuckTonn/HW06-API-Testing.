@@ -54,9 +54,9 @@ Theo đúng yêu cầu tại **Mục 6 của đề bài HW06**, hai lần thực
   - Số Assertions thất bại: 0
   - Thời gian thực thi: ~8 giây
 - **Artifact:** Tập tin `newman-test-report.zip` được tạo và cho phép tải về.
-- **Đường dẫn GitHub Run:** `https://github.com/DuckTonn/HW06-API-Testing/actions`
+- **Đường dẫn GitHub Run:** `https://github.com/DuckTonn/HW06-API-Testing./actions`
 
-*(Chèn ảnh chụp màn hình GitHub Actions Success Run vào báo cáo nộp bài)*
+![Newman Report - Sample Run 1: All-Passing Baseline](screenshots/GitHub_Actions_Success.png)
 
 ---
 
@@ -73,9 +73,9 @@ Theo đúng yêu cầu tại **Mục 6 của đề bài HW06**, hai lần thực
   - **Kết quả thực tế từ SUT:** Trả về `200 OK` (Phát hiện lỗ hổng nghiêm trọng BUG-01).
 - **Trạng thái Pipeline:** `Failed (Dấu X đỏ ❌)` với mã thoát Newman `exit code 1`.
 - **Artifact:** Báo cáo HTML chi tiết `newman_report.html` vẫn được upload đầy đủ nhờ cấu hình `if: always()`.
-- **Đường dẫn GitHub Run:** `https://github.com/DuckTonn/HW06-API-Testing/actions`
+- **Đường dẫn GitHub Run:** `https://github.com/DuckTonn/HW06-API-Testing./actions`
 
-*(Chèn ảnh chụp màn hình GitHub Actions Failed Run vào báo cáo nộp bài)*
+![Newman Report - Sample Run 2: Deliberate Defect Detection](screenshots/GitHub_Actions_Failed.png)
 
 ---
 

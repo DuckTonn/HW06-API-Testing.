@@ -8,7 +8,7 @@
 | **Môn học** | CS423 / CSC13003 – Kiểm chứng Phần mềm (HW06-AI) |
 | **System Under Test (SUT)** | EShop Backend API (`http://localhost:3000`) |
 | **Self-Assessed Grade** | 100 / 100 |
-
+| **Video demo Agent Skill** | [https://youtu.be/bWnqMi2lzZ4](https://youtu.be/bWnqMi2lzZ4) |
 ---
 
 ## 1. Executive Summary & Selected APIs

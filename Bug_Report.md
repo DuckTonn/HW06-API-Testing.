@@ -12,7 +12,11 @@
 
 Trong quá trình thực thi kiểm thử tự động toàn diện qua các phân vùng **Pool A** (FR-01: Đăng ký tài khoản, FR-06: Chi tiết sản phẩm), **Pool B** (FR-07: Giỏ hàng), và **Pool C** (FR-12: Phân quyền Web Admin), chúng tôi đã phát hiện **5 lỗi nghiêm trọng và lỗ hổng bảo mật** trong mã nguồn backend `eshop-sut/backend/server.js`.
 
-Tất cả các lỗi đã được lập trình kịch bản kiểm thử trong Postman Collection và tự động phát hiện (FAIL) trong quy trình CI/CD Newman.
+Tất cả các lỗi đã được lập trình kịch bản kiểm thử trong Postman Collection và tự động phát hiện (FAIL) trong quy trình CI/CD Newman. Toàn bộ 5 lỗi đã được mở issues và gắn nhãn tương ứng trên kho lưu trữ GitHub:
+
+- **Danh sách GitHub Issues chính thức:** [https://github.com/DuckTonn/HW06-API-Testing./issues](https://github.com/DuckTonn/HW06-API-Testing./issues)
+
+![Danh sách GitHub Issues của dự án](screenshots/Bug_Issues.png)
 
 ---
 
@@ -45,6 +49,9 @@ Tất cả các lỗi đã được lập trình kịch bản kiểm thử trong
     }
   }
   ```
+- **GitHub Issue:** [#1 — BUG-01: Broken Access Control (SEC-01) trên các API Admin](https://github.com/DuckTonn/HW06-API-Testing./issues/1)
+- **Minh chứng kiểm thử & Newman Assertion:**
+  ![Minh chứng BUG-01](screenshots/BUG01.png)
 
 ---
 
@@ -66,6 +73,9 @@ Tất cả các lỗi đã được lập trình kịch bản kiểm thử trong
 - **Kết quả thực tế (Observed Result):** Server trả về `200 OK` thông báo "Profile updated" và cập nhật trường `role` của người dùng thành `admin` trong cơ sở dữ liệu.
 - **Kết quả kỳ vọng (Expected Result):** Server phải loại bỏ (strip) hoặc từ chối trường `role` trong payload cập nhật hồ sơ cá nhân và trả về mã lỗi `400 Bad Request`.
 - **Đề xuất khắc phục:** Chỉ cho phép cập nhật các trường thông tin cơ bản (`name`, `shipping_address`, `phone`), tuyệt đối không nhận trường `role` từ client.
+- **GitHub Issue:** [#2 — BUG-02: Privilege Escalation qua Cập Nhật Hồ Sơ (SEC-04)](https://github.com/DuckTonn/HW06-API-Testing./issues/2)
+- **Minh chứng kiểm thử & Postman Payload:**
+  ![Minh chứng BUG-02](screenshots/BUG02.png)
 
 ---
 
@@ -88,6 +98,9 @@ Tất cả các lỗi đã được lập trình kịch bản kiểm thử trong
   db.all(query, [`%${searchQuery}%`], (err, rows) => { ... });
   ```
   Khi tìm kiếm chuỗi không khớp hoặc chứa ký tự đặc biệt, server phải trả về danh sách rỗng `[]` với mã `200 OK` hoặc `400 Bad Request`, tuyệt đối không thực thi cú pháp SQL ngoại lai hay trả về lỗi `500`.
+- **GitHub Issue:** [#3 — BUG-03: SQL Injection trong Tìm Kiếm Sản Phẩm (SEC-02)](https://github.com/DuckTonn/HW06-API-Testing./issues/3)
+- **Minh chứng kiểm thử & SQL Dump:**
+  ![Minh chứng BUG-03](screenshots/BUG03.png)
 
 ---
 
@@ -107,6 +120,9 @@ Tất cả các lỗi đã được lập trình kịch bản kiểm thử trong
      ```
 - **Kết quả thực tế (Observed Result):** Server trả về `200 OK` với thông báo "User registered successfully" và lưu tài khoản không hợp lệ vào hệ thống.
 - **Kết quả kỳ vọng (Expected Result):** Server phải từ chối và trả về mã lỗi `400 Bad Request` kèm thông điệp lỗi rõ ràng.
+- **GitHub Issue:** [#4 — BUG-04: Thiếu Kiểm Tra Tính Hợp Lệ Của Email và Mật Khẩu (FR-01)](https://github.com/DuckTonn/HW06-API-Testing./issues/4)
+- **Minh chứng kiểm thử:**
+  ![Minh chứng BUG-04](screenshots/BUG04.png)
 
 ---
 
@@ -120,6 +136,9 @@ Tất cả các lỗi đã được lập trình kịch bản kiểm thử trong
   2. Gửi request `PUT /api/admin/orders/:id/status` với body `{"status": "delivered"}`.
 - **Kết quả thực tế (Observed Result):** Server trả về `200 OK`, cập nhật trạng thái đơn hàng thành `delivered`.
 - **Kết quả kỳ vọng (Expected Result):** Server phải chặn giao dịch và trả về mã lỗi `400 Bad Request` với thông điệp `"Invalid state transition from canceled to delivered"`.
+- **GitHub Issue:** [#5 — BUG-05: Vi Phạm Quy Trình Chuyển Đổi Trạng Thái Đơn Hàng (FR-10)](https://github.com/DuckTonn/HW06-API-Testing./issues/5)
+- **Minh chứng kiểm thử:**
+  ![Minh chứng BUG-05](screenshots/BUG05.png)
 
 ---
 
