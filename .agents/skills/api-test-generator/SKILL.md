@@ -49,11 +49,14 @@ flowchart TD
 Run the generator script with Python 3:
 
 ```bash
-# Basic run on default API specification
+# Basic run on default API specification:
 python .agents/skills/api-test-generator/scripts/generator.py --spec eshop-sut/api_specification.md --output reports/generated_test_suite.json
 
-# Run with custom student ID and export format
-python .agents/skills/api-test-generator/scripts/generator.py --spec eshop-sut/api_specification.md --student-id 23127540 --csv test_cases/
+# Run with custom student ID:
+python .agents/skills/api-test-generator/scripts/generator.py --spec eshop-sut/api_specification.md --student-id 23127540 --output reports/generated_test_suite.json
+
+# Run full test generation engine (160 test cases + CSV output):
+python test_generator/test_generator.py
 ```
 
 ---
@@ -68,16 +71,21 @@ python .agents/skills/api-test-generator/scripts/generator.py --spec eshop-sut/a
 ### Security (SEC-01 to SEC-07)
 - **SEC-01 (Broken Access Control):** Unauthenticated access (no header) & Normal user token on `/api/admin/*`.
 - **SEC-02 (SQL Injection):** Parameterized binding test on search query `?search=' OR '1'='1'--` and path parameters.
-- **SEC-03 (Token Forgery):** Expired tokens, invalid signature, `alg: none` header.
+- **SEC-03 (Token Forgery):** Expired tokens, invalid signature, `alg: none` JWT header bypass.
 - **SEC-04 (Privilege Escalation):** Mass assignment `PUT /api/users/me` with `role: "admin"`.
 - **SEC-05 (Price Tampering):** Client-supplied item price lower than DB catalog price in `POST /api/cart`.
 - **SEC-06 (Order State Flaw):** Transitioning order from `canceled` directly to `delivered`.
+- **SEC-07 (Information Disclosure):** Verbose error messages leaking internal stack traces, DB schema, or file paths (e.g. SQLite error on `?search='` returning raw exception).
 
 ---
 
 ## 6. Output Artifacts Produced
-- `test_cases/FR01_Account_Registration.csv` (≥ 40 cases)
-- `test_cases/FR06_Product_Detail.csv` (≥ 40 cases)
-- `test_cases/FR07_Shopping_Cart.csv` (≥ 40 cases)
-- `test_cases/FR12_Access_Control.csv` (≥ 40 cases)
-- `postman/EShop_HW06_Collection.json` (Automated tests with `X-Student-Id`)
+
+| Script | Output | Description |
+| :--- | :--- | :--- |
+| `generator.py` | `reports/generated_test_suite.json` | JSON test suite generated from API spec via Agent Skill CLI |
+| `test_generator.py` | `test_cases/FR01_Account_Registration.csv` | ≥ 40 test cases for FR-01 Account Registration |
+| `test_generator.py` | `test_cases/FR06_Product_Detail.csv` | ≥ 40 test cases for FR-06 Product Detail |
+| `test_generator.py` | `test_cases/FR07_Shopping_Cart.csv` | ≥ 40 test cases for FR-07 Shopping Cart |
+| `test_generator.py` | `test_cases/FR12_Access_Control.csv` | ≥ 40 test cases for FR-12 Access Control |
+| Manual export | `postman/EShop_HW06_Collection.json` | Postman Collection v2.1.0 with automated assertions & `X-Student-Id` header |
