@@ -26,15 +26,16 @@ Báo cáo này trình bày quy trình kiểm thử API đầu cuối (End-to-End
 
 ## 2. Test Execution Summary Report
 
-| **Metric** | **Count** |
-| --- | --- |
-| **Tổng số APIs / Tính năng kiểm thử** | 4 tính năng |
-| **Test Cases do AI sinh** | 140 (35 test cases / API) |
-| **Test Cases do con người mở rộng (Human Extension)** | 20 (5 test cases / API) |
-| **Tổng số Test Cases thực thi** | **160 test cases** |
-| **Test Cases Vượt qua (Passed)** | 122 |
-| **Test Cases Phát hiện lỗi / Lỗ hổng (Failed as Expected)** | 38 |
-| **Tổng số Bugs / Lỗ hổng bảo mật báo cáo** | **5 Lỗi Critical / High** |
+| **Chỉ số kiểm thử (Metric)** | **Số lượng (Count)** |
+| :--- | :--- |
+| **Tổng số APIs / Tính năng kiểm thử** | **4 tính năng** (FR-01, FR-06, FR-07, FR-12) |
+| **Test Cases do AI sinh (Generated)** | **140 ca** (35 test cases / API) |
+| **Test Cases do con người mở rộng (Human Extension)** | **20 ca** (5 test cases / API) |
+| **Tổng số Test Cases hoàn chỉnh** | **160 test cases** (trong 4 file CSV & Excel) |
+| **Test Cases thực thi Newman Collection** | **22 requests / 47 assertions** |
+| **Assertions ĐẠT (Passed)** | **33 assertions** (70.2%) |
+| **Assertions THẤT BẠI để vạch trần lỗi (Failed as Expected)** | **14 assertions** (29.8%) |
+| **Tổng số Bugs / Lỗ hổng bảo mật báo cáo** | **5 Lỗi Critical / High** (BUG-01 đến BUG-05) |
 
 ---
 
