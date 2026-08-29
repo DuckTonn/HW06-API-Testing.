@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js Environment
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install Dependencies
         run: |
@@ -32,15 +32,27 @@ jobs:
           sleep 3
 
       - name: Run Newman API Tests
+        id: newman
+        continue-on-error: true
         run: |
+          mkdir -p reports
           newman run postman/EShop_HW06_Collection.json \
             -e postman/EShop_Environment.json \
             --reporters cli,htmlextra \
             --reporter-htmlextra-export reports/newman_report.html
 
       - name: Upload Newman Test Report Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: newman-test-report
           path: reports/newman_report.html
+          if-no-files-found: warn
+
+      - name: Verify Test Outcome
+        if: always()
+        run: |
+          if [ "${{ steps.newman.outcome }}" != "success" ]; then
+            echo "::warning::Newman API tests reported assertion failures (exposing SUT defects as expected)."
+            exit 1
+          fi
