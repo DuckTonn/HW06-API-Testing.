@@ -1,30 +1,26 @@
 [
   {
     "Test_ID": "GEN_TC_001",
-    "Category": "Domain Partition (Happy Path)",
+    "Category": "Domain Partition",
     "Title": "Valid request to POST /api/register",
     "Method": "POST",
     "Endpoint": "/api/register",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_002",
-    "Category": "Domain Partition (Missing Body)",
+    "Category": "Domain Partition",
     "Title": "Empty payload body on POST /api/register",
     "Method": "POST",
     "Endpoint": "/api/register",
-    "Payload": {},
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_003",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/register",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/register",
     "Method": "POST",
     "Endpoint": "/api/register",
     "Expected_Status": 400,
@@ -32,30 +28,26 @@
   },
   {
     "Test_ID": "GEN_TC_004",
-    "Category": "Domain Partition (Happy Path)",
+    "Category": "Domain Partition",
     "Title": "Valid request to POST /api/login",
     "Method": "POST",
     "Endpoint": "/api/login",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_005",
-    "Category": "Domain Partition (Missing Body)",
+    "Category": "Domain Partition",
     "Title": "Empty payload body on POST /api/login",
     "Method": "POST",
     "Endpoint": "/api/login",
-    "Payload": {},
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_006",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/login",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/login",
     "Method": "POST",
     "Endpoint": "/api/login",
     "Expected_Status": 400,
@@ -63,30 +55,26 @@
   },
   {
     "Test_ID": "GEN_TC_007",
-    "Category": "Domain Partition (Happy Path)",
+    "Category": "Domain Partition",
     "Title": "Valid request to POST /api/forgot-password",
     "Method": "POST",
     "Endpoint": "/api/forgot-password",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_008",
-    "Category": "Domain Partition (Missing Body)",
+    "Category": "Domain Partition",
     "Title": "Empty payload body on POST /api/forgot-password",
     "Method": "POST",
     "Endpoint": "/api/forgot-password",
-    "Payload": {},
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_009",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/forgot-password",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/forgot-password",
     "Method": "POST",
     "Endpoint": "/api/forgot-password",
     "Expected_Status": 400,
@@ -94,30 +82,26 @@
   },
   {
     "Test_ID": "GEN_TC_010",
-    "Category": "Domain Partition (Happy Path)",
+    "Category": "Domain Partition",
     "Title": "Valid request to POST /api/reset-password",
     "Method": "POST",
     "Endpoint": "/api/reset-password",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_011",
-    "Category": "Domain Partition (Missing Body)",
+    "Category": "Domain Partition",
     "Title": "Empty payload body on POST /api/reset-password",
     "Method": "POST",
     "Endpoint": "/api/reset-password",
-    "Payload": {},
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_012",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/reset-password",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/reset-password",
     "Method": "POST",
     "Endpoint": "/api/reset-password",
     "Expected_Status": 400,
@@ -125,32 +109,26 @@
   },
   {
     "Test_ID": "GEN_TC_013",
-    "Category": "Domain Partition (Happy Path)",
+    "Category": "Domain Partition",
     "Title": "Valid request to GET /api/users/me",
     "Method": "GET",
     "Endpoint": "/api/users/me",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_014",
-    "Category": "Security (Unauthenticated)",
-    "Title": "Unauthenticated access attempt to /api/users/me",
+    "Category": "Security",
+    "Title": "Unauthenticated access to /api/users/me",
     "Method": "GET",
     "Endpoint": "/api/users/me",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 401,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_015",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/users/me",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/users/me",
     "Method": "GET",
     "Endpoint": "/api/users/me",
     "Expected_Status": 400,
@@ -158,182 +136,152 @@
   },
   {
     "Test_ID": "GEN_TC_016",
-    "Category": "Domain Partition (Happy Path)",
+    "Category": "Domain Partition",
     "Title": "Valid request to PUT /api/users/me",
     "Method": "PUT",
     "Endpoint": "/api/users/me",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_017",
-    "Category": "Domain Partition (Missing Body)",
+    "Category": "Domain Partition",
     "Title": "Empty payload body on PUT /api/users/me",
     "Method": "PUT",
     "Endpoint": "/api/users/me",
-    "Payload": {},
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_018",
-    "Category": "Security (Unauthenticated)",
-    "Title": "Unauthenticated access attempt to /api/users/me",
+    "Category": "Security",
+    "Title": "Unauthenticated access to /api/users/me",
     "Method": "PUT",
     "Endpoint": "/api/users/me",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 401,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_019",
-    "Category": "Domain Partition (Happy Path)",
-    "Title": "Valid request to GET /api/products",
-    "Method": "GET",
-    "Endpoint": "/api/products",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
-    "Expected_Status": 200,
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/users/me",
+    "Method": "PUT",
+    "Endpoint": "/api/users/me",
+    "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_020",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/products",
+    "Category": "Domain Partition",
+    "Title": "Valid request to GET /api/products",
+    "Method": "GET",
+    "Endpoint": "/api/products",
+    "Expected_Status": 200,
+    "Audit_Status": "VALID"
+  },
+  {
+    "Test_ID": "GEN_TC_021",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/products",
     "Method": "GET",
     "Endpoint": "/api/products",
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
-    "Test_ID": "GEN_TC_021",
-    "Category": "Domain Partition (Happy Path)",
+    "Test_ID": "GEN_TC_022",
+    "Category": "Domain Partition",
     "Title": "Valid request to GET /api/products/:id",
     "Method": "GET",
     "Endpoint": "/api/products/:id",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
-    "Audit_Status": "VALID"
-  },
-  {
-    "Test_ID": "GEN_TC_022",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/products/:id",
-    "Method": "GET",
-    "Endpoint": "/api/products/:id",
-    "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_023",
-    "Category": "Domain Partition (Happy Path)",
-    "Title": "Valid request to GET /api/cart",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/products/:id",
     "Method": "GET",
-    "Endpoint": "/api/cart",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
-    "Expected_Status": 200,
+    "Endpoint": "/api/products/:id",
+    "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_024",
-    "Category": "Security (Unauthenticated)",
-    "Title": "Unauthenticated access attempt to /api/cart",
+    "Category": "Domain Partition",
+    "Title": "Valid request to GET /api/cart",
     "Method": "GET",
     "Endpoint": "/api/cart",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
-    "Expected_Status": 401,
+    "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_025",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/cart",
+    "Category": "Security",
+    "Title": "Unauthenticated access to /api/cart",
+    "Method": "GET",
+    "Endpoint": "/api/cart",
+    "Expected_Status": 401,
+    "Audit_Status": "VALID"
+  },
+  {
+    "Test_ID": "GEN_TC_026",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/cart",
     "Method": "GET",
     "Endpoint": "/api/cart",
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
-    "Test_ID": "GEN_TC_026",
-    "Category": "Domain Partition (Happy Path)",
+    "Test_ID": "GEN_TC_027",
+    "Category": "Domain Partition",
     "Title": "Valid request to POST /api/cart",
     "Method": "POST",
     "Endpoint": "/api/cart",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
-    "Audit_Status": "VALID"
-  },
-  {
-    "Test_ID": "GEN_TC_027",
-    "Category": "Domain Partition (Missing Body)",
-    "Title": "Empty payload body on POST /api/cart",
-    "Method": "POST",
-    "Endpoint": "/api/cart",
-    "Payload": {},
-    "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_028",
-    "Category": "Security (Unauthenticated)",
-    "Title": "Unauthenticated access attempt to /api/cart",
+    "Category": "Domain Partition",
+    "Title": "Empty payload body on POST /api/cart",
     "Method": "POST",
     "Endpoint": "/api/cart",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
-    "Expected_Status": 401,
+    "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_029",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/cart",
+    "Category": "Security",
+    "Title": "Unauthenticated access to /api/cart",
+    "Method": "POST",
+    "Endpoint": "/api/cart",
+    "Expected_Status": 401,
+    "Audit_Status": "VALID"
+  },
+  {
+    "Test_ID": "GEN_TC_030",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/cart",
     "Method": "POST",
     "Endpoint": "/api/cart",
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
-    "Test_ID": "GEN_TC_030",
-    "Category": "Domain Partition (Happy Path)",
+    "Test_ID": "GEN_TC_031",
+    "Category": "Domain Partition",
     "Title": "Valid request to POST /api/checkout",
     "Method": "POST",
     "Endpoint": "/api/checkout",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
-    "Test_ID": "GEN_TC_031",
-    "Category": "Domain Partition (Missing Body)",
-    "Title": "Empty payload body on POST /api/checkout",
-    "Method": "POST",
-    "Endpoint": "/api/checkout",
-    "Payload": {},
-    "Expected_Status": 400,
-    "Audit_Status": "VALID"
-  },
-  {
     "Test_ID": "GEN_TC_032",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/checkout",
+    "Category": "Domain Partition",
+    "Title": "Empty payload body on POST /api/checkout",
     "Method": "POST",
     "Endpoint": "/api/checkout",
     "Expected_Status": 400,
@@ -341,172 +289,161 @@
   },
   {
     "Test_ID": "GEN_TC_033",
-    "Category": "Domain Partition (Happy Path)",
-    "Title": "Valid request to GET /api/orders/my-orders",
-    "Method": "GET",
-    "Endpoint": "/api/orders/my-orders",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
-    "Expected_Status": 200,
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/checkout",
+    "Method": "POST",
+    "Endpoint": "/api/checkout",
+    "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_034",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/orders/my-orders",
+    "Category": "Domain Partition",
+    "Title": "Valid request to GET /api/orders/my-orders",
+    "Method": "GET",
+    "Endpoint": "/api/orders/my-orders",
+    "Expected_Status": 200,
+    "Audit_Status": "VALID"
+  },
+  {
+    "Test_ID": "GEN_TC_035",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/orders/my-orders",
     "Method": "GET",
     "Endpoint": "/api/orders/my-orders",
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
-    "Test_ID": "GEN_TC_035",
-    "Category": "Domain Partition (Happy Path)",
+    "Test_ID": "GEN_TC_036",
+    "Category": "Domain Partition",
     "Title": "Valid request to GET /api/orders/:id",
     "Method": "GET",
     "Endpoint": "/api/orders/:id",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
     "Expected_Status": 200,
-    "Audit_Status": "VALID"
-  },
-  {
-    "Test_ID": "GEN_TC_036",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/orders/:id",
-    "Method": "GET",
-    "Endpoint": "/api/orders/:id",
-    "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_037",
-    "Category": "Domain Partition (Happy Path)",
-    "Title": "Valid request to PUT /api/orders/:id/cancel",
-    "Method": "PUT",
-    "Endpoint": "/api/orders/:id/cancel",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
-    "Expected_Status": 200,
-    "Audit_Status": "VALID"
-  },
-  {
-    "Test_ID": "GEN_TC_038",
-    "Category": "Domain Partition (Missing Body)",
-    "Title": "Empty payload body on PUT /api/orders/:id/cancel",
-    "Method": "PUT",
-    "Endpoint": "/api/orders/:id/cancel",
-    "Payload": {},
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/orders/:id",
+    "Method": "GET",
+    "Endpoint": "/api/orders/:id",
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
-    "Test_ID": "GEN_TC_039",
-    "Category": "Domain Partition (Happy Path)",
-    "Title": "Valid request to POST /api/apply-coupon",
-    "Method": "POST",
-    "Endpoint": "/api/apply-coupon",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
+    "Test_ID": "GEN_TC_038",
+    "Category": "Domain Partition",
+    "Title": "Valid request to PUT /api/orders/:id/cancel",
+    "Method": "PUT",
+    "Endpoint": "/api/orders/:id/cancel",
     "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
+    "Test_ID": "GEN_TC_039",
+    "Category": "Domain Partition",
+    "Title": "Empty payload body on PUT /api/orders/:id/cancel",
+    "Method": "PUT",
+    "Endpoint": "/api/orders/:id/cancel",
+    "Expected_Status": 400,
+    "Audit_Status": "VALID"
+  },
+  {
     "Test_ID": "GEN_TC_040",
-    "Category": "Domain Partition (Missing Body)",
-    "Title": "Empty payload body on POST /api/apply-coupon",
-    "Method": "POST",
-    "Endpoint": "/api/apply-coupon",
-    "Payload": {},
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/orders/:id/cancel",
+    "Method": "PUT",
+    "Endpoint": "/api/orders/:id/cancel",
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_041",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/apply-coupon",
+    "Category": "Domain Partition",
+    "Title": "Valid request to POST /api/apply-coupon",
+    "Method": "POST",
+    "Endpoint": "/api/apply-coupon",
+    "Expected_Status": 200,
+    "Audit_Status": "VALID"
+  },
+  {
+    "Test_ID": "GEN_TC_042",
+    "Category": "Domain Partition",
+    "Title": "Empty payload body on POST /api/apply-coupon",
     "Method": "POST",
     "Endpoint": "/api/apply-coupon",
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
-    "Test_ID": "GEN_TC_042",
-    "Category": "Domain Partition (Happy Path)",
-    "Title": "Valid request to GET /api/coupons",
-    "Method": "GET",
-    "Endpoint": "/api/coupons",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
-    "Expected_Status": 200,
-    "Audit_Status": "VALID"
-  },
-  {
     "Test_ID": "GEN_TC_043",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/coupons",
-    "Method": "GET",
-    "Endpoint": "/api/coupons",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/apply-coupon",
+    "Method": "POST",
+    "Endpoint": "/api/apply-coupon",
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_044",
-    "Category": "Domain Partition (Happy Path)",
-    "Title": "Valid request to POST /api/admin/import-products",
-    "Method": "POST",
-    "Endpoint": "/api/admin/import-products",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
+    "Category": "Domain Partition",
+    "Title": "Valid request to GET /api/coupons",
+    "Method": "GET",
+    "Endpoint": "/api/coupons",
     "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_045",
-    "Category": "Domain Partition (Missing Body)",
-    "Title": "Empty payload body on POST /api/admin/import-products",
-    "Method": "POST",
-    "Endpoint": "/api/admin/import-products",
-    "Payload": {},
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/coupons",
+    "Method": "GET",
+    "Endpoint": "/api/coupons",
     "Expected_Status": 400,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_046",
-    "Category": "Security (Unauthenticated)",
-    "Title": "Unauthenticated access attempt to /api/admin/import-products",
+    "Category": "Domain Partition",
+    "Title": "Valid request to POST /api/admin/import-products",
     "Method": "POST",
     "Endpoint": "/api/admin/import-products",
-    "Headers": {
-      "X-Student-Id": "23127540"
-    },
-    "Expected_Status": 401,
+    "Expected_Status": 200,
     "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_047",
-    "Category": "Security (Broken Access Control SEC-01)",
-    "Title": "Normal user token accessing admin endpoint /api/admin/import-products",
+    "Category": "Domain Partition",
+    "Title": "Empty payload body on POST /api/admin/import-products",
     "Method": "POST",
     "Endpoint": "/api/admin/import-products",
-    "Headers": {
-      "Authorization": "Bearer <normal_user_token>",
-      "X-Student-Id": "23127540"
-    },
-    "Expected_Status": 403,
-    "Audit_Status": "INVALID",
-    "Audit_Rationale": "SUT fails to check role='admin', returning 200 OK."
+    "Expected_Status": 400,
+    "Audit_Status": "VALID"
   },
   {
     "Test_ID": "GEN_TC_048",
-    "Category": "Security (SQLi SEC-02)",
-    "Title": "SQL Injection verification on /api/admin/import-products",
+    "Category": "Security",
+    "Title": "Unauthenticated access to /api/admin/import-products",
+    "Method": "POST",
+    "Endpoint": "/api/admin/import-products",
+    "Expected_Status": 401,
+    "Audit_Status": "VALID"
+  },
+  {
+    "Test_ID": "GEN_TC_049",
+    "Category": "Security (SEC-01)",
+    "Title": "Normal user token access to admin route /api/admin/import-products",
+    "Method": "POST",
+    "Endpoint": "/api/admin/import-products",
+    "Expected_Status": 403,
+    "Audit_Status": "INVALID"
+  },
+  {
+    "Test_ID": "GEN_TC_050",
+    "Category": "Security (SEC-02)",
+    "Title": "SQL Injection attempt on /api/admin/import-products",
     "Method": "POST",
     "Endpoint": "/api/admin/import-products",
     "Expected_Status": 400,
