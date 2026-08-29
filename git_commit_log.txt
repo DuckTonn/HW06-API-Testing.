@@ -1,3 +1,11 @@
+commit 5a176798e29e1ab79bc8b8e6b0507cd16d9f7fd6
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:41:43 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:41:43 2026 +0700
+
+    docs(meta): regenerate git_commit_log.txt with full 20-commit history (ASCII clean)
+
 commit b8077363dbfae058fe632e6d8c4ceee92991b361
 Author:     duckton <phamductoan144@gmail.com>
 AuthorDate: Sat Aug 29 15:29:44 2026 +0700
@@ -36,7 +44,7 @@ AuthorDate: Sat Aug 29 15:29:02 2026 +0700
 Commit:     duckton <phamductoan144@gmail.com>
 CommitDate: Sat Aug 29 15:29:02 2026 +0700
 
-    fix(postman): rewrite assertions to spec-conformance -- bug tests now correctly FAIL exposing BUG-01..05
+    fix(postman): rewrite assertions to spec-conformance — bug tests now correctly FAIL exposing BUG-01..05
 
 commit 2323e305c3502f1a5bb48d9c056b7c3504fc452b
 Author:     duckton <phamductoan144@gmail.com>
@@ -157,4 +165,3 @@ Commit:     duckton <phamductoan144@gmail.com>
 CommitDate: Mon Aug 17 14:15:30 2026 +0700
 
     feat: import eshop-sut base application repository and spec
-
