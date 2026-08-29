@@ -1,120 +1,120 @@
 ---
 name: api-test-generator
-description: AI-driven API Test Generator Agent Skill that parses API specifications (Markdown or OpenAPI) and automatically synthesizes comprehensive API test cases covering Equivalence Partitioning, Boundary Value Analysis, Security (SEC-01..07), State Transitions, and Schema Validation for Postman and Newman test automation. Works with any REST API backend regardless of feature set.
+description: Agent Skill sinh test case API tự động dựa trên AI — phân tích đặc tả API (Markdown hoặc OpenAPI) và tự động tổng hợp kịch bản kiểm thử toàn diện bao phủ Phân vùng Tương đương, Phân tích Giá trị Biên, Bảo mật (SEC-01..07), Chuyển trạng thái, và Kiểm định Schema cho tự động hoá Postman & Newman. Hoạt động với bất kỳ REST API nào bất kể tập tính năng.
 ---
 
-# API Test Generator Agent Skill
+# Agent Skill — Bộ Sinh Test Case API Dựa Trên AI
 
-## 1. Overview
-This Agent Skill autonomously generates structured API test cases directly from API specification documents (`api_specification.md` or OpenAPI/Swagger JSON). It works with **any REST API** regardless of domain or feature set. Test cases are partitioned across 4 critical testing pillars:
-1. **Domain Partitions & Boundary Value Analysis (BVA)**
-2. **State Machine & Transition Rules**
-3. **Security Vulnerabilities (SEC-01..SEC-07: SQLi, Broken Access Control, Privilege Escalation, Price Tampering)**
-4. **Schema & Data Type Validation**
-
----
-
-## 2. When to Use This Skill
-Activate this skill when:
-- You need to generate API test cases for **any backend service or endpoint** (not limited to EShop).
-- You want to convert a Markdown or OpenAPI/Swagger specification into structured CSV/JSON test suites.
-- You need to generate a Postman v2.1.0 Collection with automated pre-request authentication and assertions.
-- You want to audit AI-generated test cases against actual backend code implementation flaws.
-- You want to add Human Extension test cases covering vulnerabilities that AI missed.
-
-> **Examples of supported targets:** E-commerce APIs, Auth services, Order management, Content APIs, Admin dashboards, GraphQL APIs (via REST wrapper).
+## 1. Tổng Quan
+Agent Skill này tự động sinh các kịch bản kiểm thử API có cấu trúc trực tiếp từ tài liệu đặc tả API (`api_specification.md` hoặc OpenAPI/Swagger JSON). Skill hoạt động với **bất kỳ REST API nào** bất kể miền nghiệp vụ hay tập tính năng. Kịch bản kiểm thử được phân chia theo **4 trụ cột kiểm thử chính**:
+1. **Phân vùng Tương đương & Phân tích Giá trị Biên (BVA)**
+2. **Máy trạng thái & Quy tắc Chuyển trạng thái**
+3. **Lỗ hổng Bảo mật (SEC-01..SEC-07: SQLi, Broken Access Control, Privilege Escalation, Price Tampering)**
+4. **Kiểm định Schema & Kiểu dữ liệu**
 
 ---
 
-## 3. Architecture & Workflow
+## 2. Khi Nào Sử Dụng Skill Này
+Kích hoạt skill này khi:
+- Cần sinh kịch bản kiểm thử API cho **bất kỳ dịch vụ backend hoặc endpoint nào** (không giới hạn với EShop).
+- Muốn chuyển đổi đặc tả Markdown hoặc OpenAPI/Swagger thành bộ kiểm thử CSV/JSON có cấu trúc.
+- Cần sinh Postman Collection v2.1.0 với pre-request authentication tự động và các assertions kiểm tra.
+- Muốn đối soát (Audit) các test case do AI sinh so với lỗi thực tế trong mã nguồn backend.
+- Muốn bổ sung các ca kiểm thử mở rộng do con người viết để phủ các lỗ hổng mà AI bỏ sót.
+
+> **Các hệ thống mục tiêu được hỗ trợ:** API thương mại điện tử, Dịch vụ xác thực, Quản lý đơn hàng, API nội dung, Bảng quản trị Admin, API GraphQL (thông qua REST wrapper).
+
+---
+
+## 3. Kiến Trúc & Quy Trình Xử Lý
 
 ```mermaid
 flowchart TD
-    A["API Spec (Markdown / OpenAPI)"] --> B["1. Spec Parser & Tokenizer"]
-    B --> C["2. Route & Parameter Registry"]
-    C --> D1["Domain Partition Engine (EP, BVA)"]
-    C --> D2["Security Engine (SEC-01..07)"]
-    C --> D3["State Machine Engine"]
-    C --> D4["Schema Validator Engine"]
-    D1 --> E["LLM Synthesis & Test Case Formatter"]
+    A["Đặc tả API (Markdown / OpenAPI)"] --> B["1. Bộ Phân tích Cú pháp & Tokenizer"]
+    B --> C["2. Bộ Đăng ký Route & Tham số"]
+    C --> D1["Động cơ Phân vùng Tương đương (EP, BVA)"]
+    C --> D2["Động cơ Bảo mật (SEC-01..07)"]
+    C --> D3["Động cơ Máy Trạng thái"]
+    C --> D4["Động cơ Kiểm định Schema"]
+    D1 --> E["Tổng hợp LLM & Định dạng Test Case"]
     D2 --> E
     D3 --> E
     D4 --> E
-    E --> F["Audit & Labeling (VALID / INVALID / INCOMPLETE)"]
-    F --> G1["CSV Test Suites (per feature/endpoint group)"]
+    E --> F["Đánh giá & Gắn nhãn (VALID / INVALID / INCOMPLETE)"]
+    F --> G1["Bộ Test CSV (theo nhóm tính năng/endpoint)"]
     F --> G2["Postman Collection (.json)"]
-    F --> G3["JSON Test Suite (reports/generated_test_suite.json)"]
+    F --> G3["Bộ Test JSON (reports/generated_test_suite.json)"]
 ```
 
 ---
 
-## 4. How to Run the Generator
+## 4. Cách Thực Thi Generator
 
-The skill has **two execution modes**:
+Skill có **hai chế độ thực thi**:
 
-### Mode 1: Agent Skill CLI (any spec, any project)
+### Chế độ 1: Agent Skill CLI (dùng cho bất kỳ API nào)
 ```bash
-# Generate JSON test suite from any API spec:
+# Sinh bộ test JSON từ bất kỳ đặc tả API nào:
 python .agents/skills/api-test-generator/scripts/generator.py \
     --spec path/to/api_specification.md \
     --output reports/generated_test_suite.json \
-    --student-id <YOUR_ID>
+    --student-id <MSSV_CUA_BAN>
 
-# Example for EShop SUT:
+# Ví dụ với EShop SUT:
 python .agents/skills/api-test-generator/scripts/generator.py \
     --spec eshop-sut/api_specification.md \
     --output reports/generated_test_suite.json \
     --student-id 23127540
 ```
 
-### Mode 2: Full Generation Engine (EShop — 160 test cases + CSV)
+### Chế độ 2: Động cơ Sinh Đầy Đủ (EShop — 160 test cases + CSV)
 ```bash
-# Generates all CSV files for each feature group:
+# Sinh tất cả file CSV cho từng nhóm tính năng:
 python test_generator/test_generator.py
 ```
 
 ---
 
-## 5. Test Case Taxonomy & Rules
+## 5. Phân Loại & Quy Tắc Kịch Bản Kiểm Thử
 
-### Domain Partitions
-- **Happy Path:** Valid data types within expected limits (e.g. price > 0, valid email format).
-- **Equivalence Classes:** Missing required fields, empty strings, whitespace-only, unicode/accents.
-- **Boundary Values:** Zero (`0`), negative values (`-1`), 64-bit integer overflow, single space, max length+1.
+### Phân vùng Tương đương (EP)
+- **Đường hạnh phúc (Happy Path):** Dữ liệu hợp lệ trong giới hạn cho phép (ví dụ: giá > 0, định dạng email đúng).
+- **Lớp tương đương:** Thiếu trường bắt buộc, chuỗi rỗng, chỉ khoảng trắng, ký tự unicode/dấu tiếng Việt.
+- **Giá trị biên (BVA):** Giá trị không (`0`), âm (`-1`), tràn số nguyên 64-bit, dấu cách đơn, độ dài tối đa + 1.
 
-### Security (SEC-01 to SEC-07)
-- **SEC-01 (Broken Access Control):** Unauthenticated access (no header) & normal user token on admin-only endpoints.
-- **SEC-02 (SQL Injection):** Parameterized binding test: `?search=' OR '1'='1'--` in query & path params.
-- **SEC-03 (Token Forgery):** Expired tokens, invalid signature, `alg: none` JWT header bypass.
-- **SEC-04 (Privilege Escalation):** Mass assignment with `role: "admin"` on profile update endpoints.
-- **SEC-05 (Price Tampering):** Client-supplied item price lower than server-side catalog price.
-- **SEC-06 (Order State Flaw):** Illegal state machine transitions (e.g. `canceled` → `delivered`).
-- **SEC-07 (Information Disclosure):** Verbose error messages leaking internal stack traces, DB schema, or file paths.
+### Bảo mật (SEC-01 đến SEC-07)
+- **SEC-01 (Broken Access Control):** Truy cập không xác thực (không có header) & token user thường trên endpoint `/api/admin/*`.
+- **SEC-02 (SQL Injection):** Kiểm thử binding tham số hoá: `?search=' OR '1'='1'--` trong query và path params.
+- **SEC-03 (Token Forgery — Giả mạo Token):** Token hết hạn, chữ ký không hợp lệ, JWT bypass `alg: none`.
+- **SEC-04 (Privilege Escalation — Leo thang đặc quyền):** Mass assignment với `role: "admin"` trên endpoint cập nhật hồ sơ.
+- **SEC-05 (Price Tampering — Giả mạo giá):** Giá sản phẩm do client cung cấp thấp hơn giá trong CSDL server.
+- **SEC-06 (Order State Flaw — Lỗi máy trạng thái):** Chuyển trạng thái đơn hàng bất hợp lệ (ví dụ: `canceled` → `delivered`).
+- **SEC-07 (Information Disclosure — Lộ thông tin):** Thông báo lỗi chi tiết tiết lộ stack trace, schema CSDL, hoặc đường dẫn file hệ thống.
 
-### State Machine Rules
-- Terminal states (e.g. `canceled`, `completed`) **MUST NOT** transition to active states.
-- Transitions must follow defined flow: `pending → processing → shipped → delivered`.
-- Each state transition test should include: valid transition, invalid transition (skip step), and reverse transition.
+### Quy Tắc Máy Trạng thái
+- Các trạng thái kết thúc (ví dụ: `canceled`, `completed`) **PHẢI KHÔNG** được chuyển sang trạng thái hoạt động.
+- Chuyển trạng thái phải theo đúng luồng đã định nghĩa: `pending → processing → shipped → delivered`.
+- Mỗi ca kiểm thử chuyển trạng thái cần bao gồm: chuyển hợp lệ, chuyển bất hợp lệ (bỏ qua bước), và chuyển ngược chiều.
 
 ---
 
-## 6. Input Requirements
+## 6. Yêu Cầu Đầu Vào
 
-| Input | Format | Required | Description |
+| Đầu vào | Định dạng | Bắt buộc | Mô tả |
 | :--- | :---: | :---: | :--- |
-| API Specification | Markdown / OpenAPI JSON/YAML | ✅ | Must list endpoints with method, path, auth, request/response schema |
-| Student/Project ID | String | Optional | Injected into `X-Student-Id` header of every request |
-| Base URL | String | Optional | Default: `http://localhost:3000` |
-| Feature Groups | Comma-separated | Optional | Filter test generation to specific feature IDs (e.g. `FR-01,FR-06`) |
+| Đặc tả API | Markdown / OpenAPI JSON/YAML | ✅ | Phải liệt kê endpoint với method, path, auth, schema request/response |
+| MSSV / Project ID | Chuỗi | Tuỳ chọn | Được chèn vào header `X-Student-Id` của mọi request |
+| Base URL | Chuỗi | Tuỳ chọn | Mặc định: `http://localhost:3000` |
+| Nhóm Tính năng | Danh sách phân cách bởi dấu phẩy | Tuỳ chọn | Lọc để chỉ sinh test cho các Feature ID cụ thể (ví dụ: `FR-01,FR-06`) |
 
 ---
 
-## 7. Output Artifacts Produced
+## 7. Kết Quả Đầu Ra
 
-| Script | Output File | Description |
+| Script | File Đầu Ra | Mô tả |
 | :--- | :--- | :--- |
-| `generator.py` (CLI) | `reports/generated_test_suite.json` | Generic JSON test suite — works for any API spec |
-| `test_generator.py` (Full Engine) | `test_cases/<FEATURE_ID>_<Feature_Name>.csv` | One CSV file per feature group (e.g. `FR01_Account_Registration.csv`) |
-| `test_generator.py` (Full Engine) | `test_cases/Test_Cases_Specification.md` | Master Markdown report with executed results (Expected vs Actual) |
-| Manual Export | `postman/<Project>_Collection.json` | Postman Collection v2.1.0 with `X-Student-Id` header + automated assertions |
-| CI/CD | `reports/newman_report.html` | Newman HTML Extra report generated by GitHub Actions pipeline |
+| `generator.py` (CLI) | `reports/generated_test_suite.json` | Bộ test JSON tổng quát — dùng cho bất kỳ đặc tả API nào |
+| `test_generator.py` (Động cơ Đầy Đủ) | `test_cases/<FEATURE_ID>_<Feature_Name>.csv` | Một file CSV cho mỗi nhóm tính năng (ví dụ: `FR01_Account_Registration.csv`) |
+| `test_generator.py` (Động cơ Đầy Đủ) | `test_cases/Test_Cases_Specification.md` | Báo cáo Markdown tổng hợp với kết quả thực thi (Expected vs Actual) |
+| Xuất thủ công | `postman/<Project>_Collection.json` | Postman Collection v2.1.0 với header `X-Student-Id` + assertions tự động |
+| CI/CD (GitHub Actions) | `reports/newman_report.html` | Báo cáo Newman HTML Extra được tạo bởi pipeline GitHub Actions |
