@@ -76,8 +76,7 @@ Toàn bộ quy trình kiểm thử cho từng tính năng đều đi qua 5 giai 
 ---
 
 ### 3.1. API 1 (Pool A) — FR-01: Account Registration
-- **Endpoint:** `POST /api/register`
-- **Tập tin kịch bản kiểm thử:** [test_cases/FR01_Account_Registration.csv](test_cases/FR01_Account_Registration.csv)
+- **Tập tin kịch bản kiểm thử:** [test_cases/FR01_Account_Registration.csv](test_cases/FR01_Account_Registration.csv) *(Xem toàn bộ 160 TCs dạng Markdown tại [test_cases/Test_Cases_Specification.md](test_cases/Test_Cases_Specification.md))*
 
 #### A. Tổng hợp kết quả sinh & Audit
 - **Số lượng test case do AI sinh:** 35 test cases (TC001 – TC035).

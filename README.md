@@ -77,6 +77,7 @@ Thiết kế và cài đặt hoàn chỉnh công cụ AI sinh test case tự đ�
 ## 6. Deliverable Artifact Links
 
 - **Danh mục Test Suites & Excel Summary (160 ca kiểm thử):**
+  - [test_cases/Test_Cases_Specification.md](test_cases/Test_Cases_Specification.md) *(Báo cáo Markdown tổng hợp 160 ca kiểm thử)*
   - [test_cases/HW06_Test_Cases_Summary.xlsx](test_cases/HW06_Test_Cases_Summary.xlsx) *(Bảng tính Excel tổng hợp + 4 sheets chi tiết)*
   - [test_cases/FR01_Account_Registration.csv](test_cases/FR01_Account_Registration.csv)
   - [test_cases/FR06_Product_Detail.csv](test_cases/FR06_Product_Detail.csv)
