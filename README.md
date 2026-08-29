@@ -67,43 +67,68 @@ Kịch bản kiểm thử API được tích hợp tự động vào quy trình 
 
 ---
 
-## 5. Agent Skill (AI-driven API Test Generator)
+## 5. Hướng Dẫn Sử Dụng Agent Skill (AI-driven API Test Generator)
 
-Đồ án triển khai đầy đủ kiến trúc **Antigravity Agent Skill** ([.agents/skills/api-test-generator/SKILL.md](.agents/skills/api-test-generator/SKILL.md)) giúp AI tự động đọc hiểu đặc tả API và sinh kịch bản kiểm thử có cấu trúc.
+Đồ án triển khai hoàn chỉnh một **Agent Skill chuẩn Antigravity** ([.agents/skills/api-test-generator/SKILL.md](.agents/skills/api-test-generator/SKILL.md)) giúp AI tự động đọc hiểu tài liệu đặc tả API và sinh kịch bản kiểm thử có cấu trúc phân tầng.
 
-### 5.1. Các câu Prompt mẫu điều khiển Agent (Step-by-Step Prompting)
-
-Theo quy định tại **Mục 6 của đề bài** (yêu cầu điều khiển AI từng bước, không dùng 1 prompt chung chung):
-
-1. **Prompt 1 — Phân tích đặc tả & Sinh Test Cases có cấu trúc:**
-   > *"Đọc tài liệu [api_specification.md](eshop-sut/api_specification.md) của hệ thống EShop SUT. Sử dụng kỹ thuật Equivalence Partitioning (EP), Boundary Value Analysis (BVA), State Transitions (FR-10) và Security Constraints (SEC-01 đến SEC-07) để sinh 35 test cases chi tiết cho mỗi tính năng (FR-01, FR-06, FR-07, FR-12) với các cột: Test_ID, Category, Method, Endpoint, Request_Body, Expected_Status, Expected_Response."*
-
-2. **Prompt 2 — Rà soát & Đánh giá Audit (Human Review):**
-   > *"Đối soát từng test case do AI sinh với mã nguồn thực tế trong `eshop-sut/backend/server.js`. Gắn nhãn `VALID`, `INVALID`, hoặc `INCOMPLETE` cho từng ca kiểm thử kèm lý do giải thích chi tiết dựa trên chuẩn kiểm thử ISTQB và hành vi thực tế của SUT."*
-
-3. **Prompt 3 — Mở rộng ca kiểm thử con người (Human Extension):**
-   > *"Phân tích các lỗ hổng mà AI bỏ sót do AI Specification-First Bias (thiếu khả năng phân tích tĩnh mã nguồn). Bổ sung ít nhất 5 test cases mở rộng cho mỗi API tập trung vào: Broken Access Control (SEC-01), Privilege Escalation qua Mass Assignment (SEC-04), SQL Injection (SEC-02), và Invalid State Machine (FR-10)."*
-
-4. **Prompt 4 — Xuất bản Postman Collection & Tự động hóa Newman:**
-   > *"Tổng hợp toàn bộ 160 test cases thành Postman Collection v2.1.0 và Environment JSON. Tự động chèn header `X-Student-Id: 23127540` vào Collection Pre-request Script và thiết lập các assertions kiểm thử strict-conformance để vạch trần lỗi SUT khi chạy với Newman."*
+```mermaid
+flowchart LR
+    A["API Spec (Markdown / OpenAPI)"] --> B["Agent Skill: api-test-generator"]
+    B --> C1["Domain Partition (EP / BVA)"]
+    B --> C2["Security Engine (SEC-01..07)"]
+    B --> C3["State Machine (FR-10)"]
+    B --> C4["Schema Validator"]
+    C1 & C2 & C3 & C4 --> D["Audit & Labeling (VALID/INVALID)"]
+    D --> E["Master Test Suites (CSV / Excel / Postman)"]
+```
 
 ---
 
-### 5.2. Lệnh thực thi Agent Skill
+### 5.1. Cách 1: Sử dụng tương tác thông qua AI Chat (Antigravity IDE / Agentic Chat)
 
-Bạn có thể chạy trực tiếp engine sinh test case bằng dòng lệnh:
+Khi mở dự án trong môi trường Antigravity IDE, hệ thống sẽ **tự động nạp Skill** `api-test-generator`. Bạn chỉ cần gửi các câu prompt theo từng bước:
 
-```bash
-# Chạy script sinh test và xuất báo cáo JSON:
+* **Bước 1 — Yêu cầu sinh test cases từ đặc tả API:**
+  > *"Kích hoạt skill `api-test-generator` để phân tích file [api_specification.md](eshop-sut/api_specification.md) và tự động sinh 35 test cases cho mỗi API (FR-01, FR-06, FR-07, FR-12) bao phủ đầy đủ: Phân vùng tương đương (EP), Phân tích giá trị biên (BVA), Chuyển trạng thái (FR-10) và An toàn thông tin (SEC-01..07)."*
+
+* **Bước 2 — Yêu cầu đối soát mã nguồn (Human Audit):**
+  > *"Đối chiếu từng test case vừa sinh với mã nguồn `eshop-sut/backend/server.js`. Gắn nhãn `VALID`, `INVALID`, hoặc `INCOMPLETE` kèm phân tích nguyên nhân dựa trên quy tắc kiểm thử ISTQB."*
+
+* **Bước 3 — Yêu cầu mở rộng các ca kiểm thử bỏ sót (Human Extension):**
+  > *"Tìm ra 5 ca kiểm thử bảo mật và lỗi logic mà AI đã bỏ sót do AI Specification-First Bias (như Broken Access Control BUG-01, Privilege Escalation BUG-02, SQL Injection BUG-03, Invalid State Machine BUG-05). Bổ sung vào danh mục kiểm thử."*
+
+* **Bước 4 — Xuất bản Postman Collection & Chạy kiểm thử tự động:**
+  > *"Tổng hợp thành Postman Collection v2.1.0 với Pre-request Script chèn Header `X-Student-Id: 23127540` và chạy kiểm thử tự động bằng Newman để xuất báo cáo HTML Extra."*
+
+---
+
+### 5.2. Cách 2: Chạy trực tiếp bằng dòng lệnh (CLI Mode)
+
+Bạn có thể kích hoạt Agent Skill độc lập trong Terminal / CMD:
+
+```powershell
+# 1. Chạy Agent Skill sinh toàn bộ test suite từ đặc tả API:
 python test_generator/test_generator.py
 
-# Hoặc kích hoạt qua Agent Skill CLI:
+# 2. Hoặc chạy qua Skill CLI Script chuyên dụng:
 python .agents/skills/api-test-generator/scripts/generator.py --spec eshop-sut/api_specification.md --output reports/generated_test_suite.json
+
+# 3. Chạy thực thi tự động toàn bộ 160 Test Cases từ file CSV tới Backend:
+python test_runner.py
 ```
 
-- **Sơ đồ kiến trúc & Pseudocode:** [test_generator/architecture.md](test_generator/architecture.md)
-- **Hình ảnh sơ đồ tự vẽ (Anti-Cheat):** [test_generator/architecture_diagram.png](test_generator/architecture_diagram.png)
-- **Agent Skill Definition (YAML + MD):** [.agents/skills/api-test-generator/SKILL.md](.agents/skills/api-test-generator/SKILL.md)
+---
+
+### 5.3. Các thành phần của Agent Skill trong Repository
+
+| Thành phần | Tập tin | Mô tả chức năng |
+| :--- | :--- | :--- |
+| **Định nghĩa Skill** | [`.agents/skills/api-test-generator/SKILL.md`](.agents/skills/api-test-generator/SKILL.md) | Metadata YAML + Hướng dẫn hành vi Agent |
+| **Engine thực thi** | [`.agents/skills/api-test-generator/scripts/generator.py`](.agents/skills/api-test-generator/scripts/generator.py) | Module phân tích cú pháp và sinh test Python |
+| **Mã nguồn bổ trợ** | [`test_generator/test_generator.py`](test_generator/test_generator.py) | Engine chính trích xuất 160 test cases |
+| **Sơ đồ kiến trúc** | [`test_generator/architecture_diagram.png`](test_generator/architecture_diagram.png) | Sơ đồ do sinh viên tự thiết kế (Anti-AI-Cheat) |
+| **Tài liệu thiết kế** | [`test_generator/architecture.md`](test_generator/architecture.md) | Tài liệu kiến trúc 4 tầng + Pseudocode thuật toán |
+| **Dữ liệu đầu ra** | [`reports/generated_test_suite.json`](reports/generated_test_suite.json) | Kết quả JSON sinh ra từ Agent Skill |
 
 ---
 
