@@ -73,11 +73,21 @@ Tất cả các lỗi đã được lập trình kịch bản kiểm thử trong
 - **Mức độ nghiêm trọng:** **CAO (HIGH)**
 - **Phân loại:** An ninh bảo mật / SQL Injection
 - **Endpoint bị ảnh hưởng:** `GET /api/products?search=...`
-- **Mô tả lỗi:** Backend sử dụng phép nối chuỗi trực tiếp (template string) để tạo câu truy vấn SQL: `const query = 'SELECT * FROM products WHERE name LIKE \'%' + searchQuery + '%\'';` thay vì sử dụng tham số hóa (Parameterized Query / Prepared Statement).
+- **Mô tả lỗi:** Backend sử dụng phép nối chuỗi trực tiếp (template literal) để tạo câu truy vấn SQL: `const query = 'SELECT * FROM products WHERE name LIKE \'%' + searchQuery + '%\'';` thay vì sử dụng cơ chế tham số hóa (Parameterized Query). Lỗ hổng này cho phép kẻ tấn công chèn các biểu thức SQL tùy ý, dẫn đến 2 hành vi nguy hiểm:
+  1. **Boolean-based SQL Injection:** Truyền payload `' OR '1'='1` khiến điều kiện SQL luôn đúng (`TRUE`), bẻ gãy bộ lọc tìm kiếm và đổ toàn bộ danh mục sản phẩm (dump full database) về client với mã `200 OK`.
+  2. **Error-based SQL Injection / Information Disclosure:** Truyền ký tự bẻ gãy cú pháp như `'` khiến câu truy vấn lỗi cú pháp, máy chủ sập và trả về mã lỗi `500 Internal Server Error` kèm trang HTML rò rỉ cấu trúc SQLite nội bộ (`<h1>Database Error</h1><p>SQLITE_ERROR: unrecognized token: "'"</p>`).
 - **Các bước tái hiện (Steps to Reproduce):**
-  1. Gửi request `GET /api/products?search=' OR '1'='1`
-- **Kết quả thực tế (Observed Result):** Câu lệnh SQL bị bẻ gãy cú pháp, trả về toàn bộ dữ liệu hoặc gây lỗi máy chủ `500 Internal Server Error` kèm trang HTML rò rỉ cấu trúc bảng cơ sở dữ liệu (`<h1>Database Error</h1>`).
-- **Kết quả kỳ vọng (Expected Result):** Hệ thống phải sử dụng Parameterized Query `WHERE name LIKE ?` và trả về mã `200 OK` (kết quả rỗng) hoặc `400 Bad Request`, không để lộ thông tin cơ sở dữ liệu.
+  - **Trường hợp A (Rò rỉ lỗi Database):** Gửi request `GET /api/products?search='`
+  - **Trường hợp B (Dump toàn bộ Database):** Gửi request `GET /api/products?search=' OR '1'='1`
+- **Kết quả thực tế (Observed Result):**
+  - Trường hợp A: Trả về `500 Internal Server Error` kèm giao diện HTML để lộ thông tin lỗi SQLite backend.
+  - Trường hợp B: Trả về `200 OK` nhưng trả về toàn bộ danh sách tất cả sản phẩm trong database thay vì kết quả tìm kiếm rỗng.
+- **Kết quả kỳ vọng (Expected Result):** Hệ thống bắt buộc phải dùng Parameterized Query để xử lý an toàn đầu vào:
+  ```javascript
+  const query = "SELECT * FROM products WHERE name LIKE ?";
+  db.all(query, [`%${searchQuery}%`], (err, rows) => { ... });
+  ```
+  Khi tìm kiếm chuỗi không khớp hoặc chứa ký tự đặc biệt, server phải trả về danh sách rỗng `[]` với mã `200 OK` hoặc `400 Bad Request`, tuyệt đối không thực thi cú pháp SQL ngoại lai hay trả về lỗi `500`.
 
 ---
 
