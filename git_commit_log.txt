@@ -1,3 +1,43 @@
+commit b8077363dbfae058fe632e6d8c4ceee92991b361
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:44 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:44 2026 +0700
+
+    chore(sut): update SQLite database with seeded test data for Newman execution
+
+commit d3bc1d0e9abc74d21bb281b13a0fa404febe1dd1
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:31 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:31 2026 +0700
+
+    docs(meta): update README deliverable links, gitignore, and git commit log
+
+commit a7a7af63f7aa64a3c965f54563cfaaef52286f79
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:24 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:24 2026 +0700
+
+    feat(artifacts): add Excel test summary and agent skill architecture diagram PNG
+
+commit c41cd79556e780d5e45e49a3f5bcab5063cfc3c2
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:13 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:13 2026 +0700
+
+    docs(report): add Main_Report, CICD_Report, and AI Critique for HW06 submission
+
+commit 6e69134080f9db6cf3a3513418583bae80203cbc
+Author:     duckton <phamductoan144@gmail.com>
+AuthorDate: Sat Aug 29 15:29:02 2026 +0700
+Commit:     duckton <phamductoan144@gmail.com>
+CommitDate: Sat Aug 29 15:29:02 2026 +0700
+
+    fix(postman): rewrite assertions to spec-conformance -- bug tests now correctly FAIL exposing BUG-01..05
+
 commit 2323e305c3502f1a5bb48d9c056b7c3504fc452b
 Author:     duckton <phamductoan144@gmail.com>
 AuthorDate: Sun Aug 23 11:59:00 2026 +0700
@@ -117,3 +157,4 @@ Commit:     duckton <phamductoan144@gmail.com>
 CommitDate: Mon Aug 17 14:15:30 2026 +0700
 
     feat: import eshop-sut base application repository and spec
+
