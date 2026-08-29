@@ -1,3 +1,4 @@
 node_modules/
 eshop-sut/backend/node_modules/
 *.log
+__pycache__/

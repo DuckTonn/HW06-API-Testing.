@@ -76,19 +76,28 @@ Thiết kế và cài đặt hoàn chỉnh công cụ AI sinh test case tự đ�
 
 ## 6. Deliverable Artifact Links
 
-- **Danh mục Test Suites (CSV - 160 ca kiểm thử):**
+- **Danh mục Test Suites & Excel Summary (160 ca kiểm thử):**
+  - [test_cases/HW06_Test_Cases_Summary.xlsx](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/HW06_Test_Cases_Summary.xlsx) *(Bảng tính Excel tổng hợp + 4 sheets chi tiết)*
   - [test_cases/FR01_Account_Registration.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR01_Account_Registration.csv)
   - [test_cases/FR06_Product_Detail.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR06_Product_Detail.csv)
   - [test_cases/FR07_Shopping_Cart.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR07_Shopping_Cart.csv)
   - [test_cases/FR12_Access_Control.csv](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_cases/FR12_Access_Control.csv)
+- **Agent Skill & Sơ đồ kiến trúc:**
+  - [test_generator/architecture_diagram.png](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/architecture_diagram.png) *(Sơ đồ kiến trúc PNG theo chuẩn Mục 14)*
+  - [test_generator/architecture.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/architecture.md) *(Mermaid + Pseudocode)*
+  - [test_generator/test_generator.py](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/test_generator/test_generator.py) *(Mã nguồn Python)*
+  - [.agents/skills/api-test-generator/SKILL.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/.agents/skills/api-test-generator/SKILL.md) *(Agent Skill chuẩn Antigravity)*
 - **Postman & Environment Files:**
   - [postman/EShop_HW06_Collection.json](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/postman/EShop_HW06_Collection.json)
   - [postman/EShop_Environment.json](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/postman/EShop_Environment.json)
-- **Báo cáo & Phụ lục AI:**
-  - [AI_Audit_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/AI_Audit_Report.md) (Mẫu 5 mục FIT HCMUS 2026)
-  - [AI_Critique.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/AI_Critique.md) (Phê bình AI 200–300 từ)
-  - [Bug_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/Bug_Report.md) (5 Lỗi bảo mật & Logic SUT)
-  - [git_commit_log.txt](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/git_commit_log.txt)
+  - [reports/newman_report.html](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/reports/newman_report.html)
+- **Báo cáo & Phụ lục (Đầy đủ Markdown + PDF theo chuẩn Mục 14):**
+  - [Main_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/Main_Report.md) & [Main_Report.pdf](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/Main_Report.pdf) & [README.pdf](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/README.pdf)
+  - [AI_Audit_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/AI_Audit_Report.md) & [AI_Audit_Report.pdf](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/AI_Audit_Report.pdf)
+  - [ai_critique.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/ai_critique.md) & [AI_Critique.pdf](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/AI_Critique.pdf)
+  - [Bug_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/Bug_Report.md) & [Bug_Report.pdf](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/Bug_Report.pdf)
+  - [CICD_Report.md](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/CICD_Report.md) & [CICD_Report.pdf](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/CICD_Report.pdf)
+  - [git_commit_log.txt](file:///e:/Nam3-HKIII/KiemThuPhanMem/HW06/git_commit_log.txt) *(UTF-8 plain text)*
 
 ---
 
