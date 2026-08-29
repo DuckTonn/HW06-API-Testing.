@@ -1,3 +1,24 @@
+* commit 53a4ebf04c8d118e8201e260c9dcb3e6258b368b
+| Author: duckton <phamductoan144@gmail.com>
+| Date:   Sat Aug 29 15:54:19 2026 +0700
+| 
+|     docs: convert all absolute file:/// links to relative markdown links
+| 
+|  Bug_Report.md  | 12 ++++++------
+|  CICD_Report.md |  2 +-
+|  Main_Report.md | 46 +++++++++++++++++++++++-----------------------
+|  README.md      | 42 +++++++++++++++++++++---------------------
+|  4 files changed, 51 insertions(+), 51 deletions(-)
+| 
+* commit ea1c4902082546a3c7aea98d0c2735ea6d23ec5d
+| Author: duckton <phamductoan144@gmail.com>
+| Date:   Sat Aug 29 15:50:50 2026 +0700
+| 
+|     docs: update git_commit_log.txt with full git log --graph --all --stat
+| 
+|  git_commit_log.txt | 506 +++++++++++++++++++++++++++++++++------------------
+|  1 file changed, 331 insertions(+), 175 deletions(-)
+| 
 * commit 6e9a9d5ea82b152baddf5c1608fd0cd9f36efa9b
 | Author: duckton <phamductoan144@gmail.com>
 | Date:   Sat Aug 29 15:48:25 2026 +0700
