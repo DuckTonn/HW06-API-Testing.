@@ -858,6 +858,8 @@
   "variable": [
     { "key": "baseUrl", "value": "http://localhost:3000" },
     { "key": "userToken", "value": "" },
-    { "key": "adminToken", "value": "" }
+    { "key": "adminToken", "value": "" },
+    { "key": "productId", "value": "1" },
+    { "key": "orderId", "value": "1" }
   ]
 }

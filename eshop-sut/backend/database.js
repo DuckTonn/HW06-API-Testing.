@@ -110,6 +110,13 @@ function initDatabase() {
         insertCoupon.run('EXPIRED', 'percent', 20, 100000, '2020-01-01', 1, 1);  // 20% off, EXPIRED
         insertCoupon.finalize();
 
+        // Seed Orders (Order 1 in 'canceled' state for testing BUG-05 state transition)
+        const insertOrder = db.prepare('INSERT INTO orders (user_id, total_amount, status, shipping_address) VALUES (?, ?, ?, ?)');
+        insertOrder.run(2, 30000000, 'canceled', '227 Nguyen Van Cu, Q5, TP.HCM'); // Order 1: canceled
+        insertOrder.run(2, 45000000, 'pending', '123 Le Loi, Q1, TP.HCM');          // Order 2: pending
+        insertOrder.run(1, 10000000, 'confirmed', 'Admin Office, TP.HCM');          // Order 3: confirmed
+        insertOrder.finalize();
+
         console.log('Database initialized and seeded (Phase 2).');
     });
 }
